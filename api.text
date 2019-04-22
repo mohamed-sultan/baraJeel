@@ -1,0 +1,1353 @@
+{
+	"variables": [],
+	"info": {
+		"name": "3mora2",
+		"_postman_id": "4301bb7a-8e1d-12d4-3354-5875491e7fb9",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://omrah.feckrah.com/public/api/add_conversions_api",
+			"request": {
+				"url": "http://omrah.feckrah.com/public/api/add_conversions_api",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "sender_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "receiver_id",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "message_details",
+							"value": "test message",
+							"type": "text"
+						}
+						
+					]
+				},
+				"description": " add conversion between two users "
+			},
+			"response":
+			[
+		      {
+    "data": {
+        "success": "1"
+    },
+    "status": true,
+    "error": ""
+}
+			]
+		},
+		
+		{
+			"name": "http://omrah.feckrah.com/public/api/conversions_api",
+			"request": {
+				"url": "http://omrah.feckrah.com/public/api/conversions_api",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "user_id",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"description": "conversion of specific user\nparameter : user_id"
+			},
+			"response": 
+			[
+			{
+    "data": [
+        {
+            "id": 5,
+            "sender_id": "2",
+            "receiver_id": "1",
+            "message_details": "dfd\nrgre",
+            "created_at": null,
+            "updated_at": null
+        },
+        {
+            "id": 6,
+            "sender_id": "2",
+            "receiver_id": "1",
+            "message_details": "dfd\nrgre",
+            "created_at": null,
+            "updated_at": null
+        },
+        {
+            "id": 7,
+            "sender_id": "2",
+            "receiver_id": "1",
+            "message_details": "dfd\nrgre",
+            "created_at": null,
+            "updated_at": null
+        }
+    ],
+    "status": true,
+    "error": ""
+}
+			]
+		},
+		{
+			"name": "http://omrah.feckrah.com/public/api/delete_conversions_api",
+			"request": {
+				"url": "http://omrah.feckrah.com/public/api/delete_conversions_api",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "conversion_id",
+							"value": "5",
+							"type": "text"
+						}
+					]
+				},
+				"description": " delete specific conversion "
+			},
+			"response":
+			[
+			{
+    "data": {
+        "success": "1"
+    },
+    "status": true,
+    "error": ""
+}
+			]
+		},
+		
+		
+			{
+			"name": "http://omrah.feckrah.com/public/api/specific_reservation_api",
+			"request": {
+				"url": "http://omrah.feckrah.com/public/api/specific_reservation_api",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "reservation_id",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"description": "get specific reservation "
+			},
+			"response":
+			[
+		{
+    "data": [
+        {
+            "id": "2",
+            "trip_type_name_ar": "العادى",
+            "trip_type_name_en": "Regular",
+            "do_access": "القيام من الرياض وصول الى مكة",
+            "number_of_person": "2"
+        }
+    ],
+    "status": true,
+    "error": ""
+}
+			]
+		},
+		
+		{
+			"name": "http://omrah.feckrah.com/public/api/all_current_user_reservation_api",
+			"request": {
+				"url": "http://omrah.feckrah.com/public/api/all_current_user_reservation_api",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "user_id",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"description": "get all current user reservations "
+			},
+			"response":
+			[
+		{
+    "data": [
+        {
+            "id": "2",
+            "trip_type_name_ar": "العادى",
+            "trip_type_name_en": "Regular",
+            "do_access": "القيام من الرياض وصول الى مكة",
+            "number_of_person": "2"
+        }
+    ],
+    "status": true,
+    "error": ""
+}
+			]
+		},
+		
+		{
+			"name": "http://omrah.feckrah.com/public/api/all_previous_user_reservation_api",
+			"request": {
+				"url": "http://omrah.feckrah.com/public/api/all_previous_user_reservation_api",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "user_id",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"description": " get all previous reservation based on reservation date"
+			},
+			"response":
+			[
+		
+		{
+    "data": [],
+    "status": true,
+    "error": ""
+}
+			]
+		},
+		
+		{
+			"name": "http://omrah.feckrah.com/public/api/all_user_reservation_api",
+			"request": {
+				"url": "http://omrah.feckrah.com/public/api/all_user_reservation_api",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "user_id",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"description": "get all user reservation "
+			},
+			"response":
+			[
+		{
+    "data": [
+        {
+            "id": "2",
+            "trip_type_name_ar": "العادى",
+            "trip_type_name_en": "Regular",
+            "do_access": "القيام من الرياض وصول الى مكة",
+            "number_of_person": "2"
+        }
+    ],
+    "status": true,
+    "error": ""
+}
+			]
+		},
+		
+		{
+			"name": "http://omrah.feckrah.com/public/api/add_reservation_api",
+			"request": {
+				"url": "http://omrah.feckrah.com/public/api/add_reservation_api",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "user_id",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "trip_id",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"description": " add reservation to user"
+			},
+			"response":
+			[
+		       {
+    "data": {
+        "success": "1"
+    },
+    "status": true,
+    "error": ""
+}
+			]
+		},
+		
+		{
+			"name": "http://omrah.feckrah.com/public/api/update_reservation_api",
+			"request": {
+				"url": "http://omrah.feckrah.com/public/api/update_reservation_api",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "reservation_id",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "trip_id",
+							"value": "2",
+							"type": "text"
+						}
+					]
+				},
+				"description": " edit reservation"
+			},
+			"response":
+			[
+		{
+    "data": "Update reservation successfully",
+    "status": true,
+    "error": ""
+}
+			]
+		},
+		
+		{
+			"name": "http://omrah.feckrah.com/public/api/delete_reservation_api",
+			"request": {
+				"url": "http://omrah.feckrah.com/public/api/delete_reservation_api",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "reservation_id",
+							"value": "2",
+							"type": "text"
+						}
+					]
+				},
+				"description": " "
+			},
+			"response":
+			[
+		{
+    "data": {
+        "success": "1"
+    },
+    "status": true,
+    "error": ""
+}
+			]
+		},
+		
+		{
+			"name": "http://omrah.feckrah.com/public/api/add_bill_api",
+			"request": {
+				"url": "http://omrah.feckrah.com/public/api/add_bill_api",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "reservation_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "trip_cost",
+							"value": "5555",
+							"type": "text"
+						},
+						{
+							"key": "pay_type_id",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"description": " add bill to specific reservation"
+			},
+			"response":
+			[
+		{
+    "data": {
+        "success": "1"
+    },
+    "status": true,
+    "error": ""
+}
+			]
+		},
+		
+		{
+			"name": "http://omrah.feckrah.com/public/api/all_reservation_bill_api",
+			"request": {
+				"url": "http://omrah.feckrah.com/public/api/all_reservation_bill_api",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "reservation_id",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"description": " get all reservation bills"
+			},
+			"response":
+			[
+		      {
+    "data": [
+        {
+            "id": 1,
+            "reservation_id": "1",
+            "pay_type_id": "1",
+            "trip_cost": "25555",
+            "created_at": "2019-03-25 05:41:47",
+            "updated_at": "2019-03-25 05:41:47"
+        }
+    ],
+    "status": true,
+    "error": ""
+}
+			]
+		},
+		
+		{
+			"name": "http://omrah.feckrah.com/public/api/specific_bill_api",
+			"request": {
+				"url": "http://omrah.feckrah.com/public/api/specific_bill_api",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "bill_id",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"description": " get specific_bill_api"
+			},
+			"response":
+			[
+		{
+    "data": [
+        {
+            "id": 1,
+            "reservation_id": "1",
+            "pay_type_id": "1",
+            "trip_cost": "25555",
+            "created_at": "2019-03-25 05:41:47",
+            "updated_at": "2019-03-25 05:41:47"
+        }
+    ],
+    "status": true,
+    "error": ""
+}
+			]
+		},
+		
+		{
+			"name": "http://omrah.feckrah.com/public/api/update_bill_api",
+			"request": {
+				"url": "http://omrah.feckrah.com/public/api/update_bill_api",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "bill_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "pay_type_id",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "trip_cost",
+							"value": "7777",
+							"type": "text"
+						}
+					]
+				},
+				"description": " update bill "
+			},
+			"response":
+			[
+		      {
+    "data": "Update bill successfully",
+    "status": true,
+    "error": ""
+}
+			]
+		},
+		
+		{
+			"name": "http://omrah.feckrah.com/public/api/delete_bill_api",
+			"request": {
+				"url": "http://omrah.feckrah.com/public/api/delete_bill_api",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "bill_id",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"description": " delete bill "
+			},
+			"response":
+			[
+		      {
+    "data": {
+        "success": "1"
+    },
+    "status": true,
+    "error": ""
+}
+			]
+		},
+		
+		{
+			"name": "http://omrah.feckrah.com/public/api/pay_methods_api",
+			"request": {
+				"url": "http://omrah.feckrah.com/public/api/pay_methods_api",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						
+					]
+				},
+				"description": " display pay methods"
+			},
+			"response":
+			[
+		{
+    "data": [
+        {
+            "id": 1,
+            "pay_method_name": "Cash",
+            "pay_image": "Cash.png",
+            "created_at": "2019-03-18 15:00:00",
+            "updated_at": null
+        },
+        {
+            "id": 2,
+            "pay_method_name": "Visa",
+            "pay_image": "visa.png",
+            "created_at": null,
+            "updated_at": null
+        },
+        {
+            "id": 3,
+            "pay_method_name": "Pay Pal",
+            "pay_image": "paypal.png",
+            "created_at": null,
+            "updated_at": null
+        }
+    ],
+    "status": true,
+    "error": ""
+}
+			]
+		},
+		
+			{
+			"name": "http://omrah.feckrah.com/public/api/specific_pay_method_api",
+			"request": {
+				"url": "http://omrah.feckrah.com/public/api/specific_pay_method_api",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "method_id",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"description": "get specifi method "
+			},
+			"response":
+			[
+		     {
+    "data": [
+        {
+            "id": 1,
+            "pay_method_name": "Cash",
+            "pay_image": "Cash.png",
+            "created_at": "2019-03-18 15:00:00",
+            "updated_at": null
+        }
+    ],
+    "status": true,
+    "error": ""
+}
+			]
+		},
+		
+			{
+			"name": "http://omrah.feckrah.com/public/api/all_trips_api",
+			"request": {
+				"url": "http://omrah.feckrah.com/public/api/all_trips_api",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						
+					]
+				},
+				"description": "get all trips "
+			},
+			"response":
+			[
+		         {
+    "data": [
+        {
+            "id": 2,
+            "user_id": "4",
+            "trip_type_id": "1",
+            "trip_date_id": "1",
+            "route_type_id": "2",
+            "cost_type_id": "2",
+            "number_of_person": "2",
+            "do_access": "القيام من الرياض وصول الى مكة",
+            "created_at": null,
+            "updated_at": null
+        }
+    ],
+    "status": true,
+    "error": ""
+}
+			]
+		},
+		
+			{
+			"name": "http://omrah.feckrah.com/public/api/specific_trips_api",
+			"request": {
+				"url": "http://omrah.feckrah.com/public/api/specific_trips_api",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "trip_id",
+							"value": "2",
+							"type": "text"
+						}
+					]
+				},
+				"description": "get specific trip data "
+			},
+			"response":
+			[
+		       {
+    "data": [
+        {
+            "id": 2,
+            "user_id": "4",
+            "trip_type_id": "1",
+            "trip_date_id": "1",
+            "route_type_id": "2",
+            "cost_type_id": "2",
+            "number_of_person": "2",
+            "do_access": "القيام من الرياض وصول الى مكة",
+            "created_at": null,
+            "updated_at": null
+        }
+    ],
+    "status": true,
+    "error": ""
+}
+			]
+		},
+		
+			{
+			"name": "http://omrah.feckrah.com/public/api/costing_types_api",
+			"request": {
+				"url": "http://omrah.feckrah.com/public/api/costing_types_api",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						
+					]
+				},
+				"description": " costing types "
+			},
+			"response":
+			[
+		       {
+    "data": [
+        {
+            "id": 1,
+            "type_name_ar": "بروموكود",
+            "type_name_en": "Promocode",
+            "created_at": null,
+            "updated_at": null
+        },
+        {
+            "id": 2,
+            "type_name_ar": "خصم خاص",
+            "type_name_en": "Special Discount",
+            "created_at": null,
+            "updated_at": null
+        }
+    ],
+    "status": true,
+    "error": ""
+}
+			]
+		},
+		
+			{
+			"name": "http://omrah.feckrah.com/public/api/specific_costing_type_api",
+			"request": {
+				"url": "http://omrah.feckrah.com/public/api/specific_costing_type_api",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "type_id",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"description": " "
+			},
+			"response":
+			[
+		       {
+    "data": [
+        {
+            "id": 1,
+            "type_name_ar": "بروموكود",
+            "type_name_en": "Promocode",
+            "created_at": null,
+            "updated_at": null
+        }
+    ],
+    "status": true,
+    "error": ""
+}
+			]
+		},
+		
+			{
+			"name": "http://omrah.feckrah.com/public/api/trip_dates_api",
+			"request": {
+				"url": "http://omrah.feckrah.com/public/api/trip_dates_api",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						
+					]
+				},
+				"description": " trips dates"
+			},
+			"response":
+			[
+		           {
+    "data": [
+        {
+            "id": 1,
+            "go_date_ar": "2019-03-25",
+            "go_date_en": "0000-00-00",
+            "return_date_ar": "0000-00-00",
+            "return_date_en": "0000-00-00",
+            "created_at": null,
+            "updated_at": null
+        }
+    ],
+    "status": true,
+    "error": ""
+} 
+			]
+		},
+		
+			{
+			"name": "http://omrah.feckrah.com/public/api/specific_trip_date_api",
+			"request": {
+				"url": "http://omrah.feckrah.com/public/api/specific_trip_date_api",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "date_id",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"description": " get data of specific date"
+			},
+			"response":
+			[
+		          {
+    "data": [
+        {
+            "id": 1,
+            "go_date_ar": "2019-03-25",
+            "go_date_en": "0000-00-00",
+            "return_date_ar": "0000-00-00",
+            "return_date_en": "0000-00-00",
+            "created_at": null,
+            "updated_at": null
+        }
+    ],
+    "status": true,
+    "error": ""
+}
+			]
+		},
+		
+			{
+			"name": "http://omrah.feckrah.com/public/api/route_types_api",
+			"request": {
+				"url": "http://omrah.feckrah.com/public/api/route_types_api",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						
+					]
+				},
+				"description": " get all rout types "
+			},
+			"response":
+			[
+		            {
+    "data": [
+        {
+            "id": 1,
+            "route_type_ar": "مكة فقط",
+            "route_type_en": "Only Maka",
+            "created_at": null,
+            "updated_at": null
+        },
+        {
+            "id": 2,
+            "route_type_ar": "مكة والمدينة",
+            "route_type_en": "Maka , Madina",
+            "created_at": null,
+            "updated_at": null
+        }
+    ],
+    "status": true,
+    "error": ""
+}
+			]
+		},
+					{
+			"name": "http://omrah.feckrah.com/public/api/specific_route_type_api",
+			"request": {
+				"url": "http://omrah.feckrah.com/public/api/specific_route_type_api",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "type_id",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"description": "get specific route type "
+			},
+			"response":
+			[
+		            {
+    "data": [
+        {
+            "id": 1,
+            "route_type_ar": "مكة فقط",
+            "route_type_en": "Only Maka",
+            "created_at": null,
+            "updated_at": null
+        }
+    ],
+    "status": true,
+    "error": ""
+}
+			]
+		},
+		
+					{
+			"name": "http://omrah.feckrah.com/public/api/trip_types_api",
+			"request": {
+				"url": "http://omrah.feckrah.com/public/api/trip_types_api",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						
+					]
+				},
+				"description": "  all trip types"
+			},
+			"response":
+			[
+			{
+    "data": [
+        {
+            "id": 1,
+            "type_name_ar": "العادى",
+            "type_name_en": "Regular",
+            "type_details_ar": "باص عادى \r\n بدون وجبة",
+            "type_details_en": "Regular bus \r\n no meal",
+            "created_at": null,
+            "updated_at": null
+        },
+        {
+            "id": 2,
+            "type_name_ar": "الكلاسيك",
+            "type_name_en": "Classic ",
+            "type_details_ar": "باص مميز\r\n مع وجبة",
+            "type_details_en": "Special bus \r\n with a meal",
+            "created_at": null,
+            "updated_at": null
+        },
+        {
+            "id": 3,
+            "type_name_ar": "الذهبية",
+            "type_name_en": "Golden",
+            "type_details_ar": "باص فاخر\r\nطيران\r\nمع وجبة مميزة",
+            "type_details_en": "\r\nFakhir bus \r\n air \r\n with a special meal",
+            "created_at": null,
+            "updated_at": null
+        }
+    ],
+    "status": true,
+    "error": ""
+}
+		
+			]
+		},
+		
+					{
+			"name": "http://omrah.feckrah.com/public/api/specific_trip_type_api",
+			"request": {
+				"url": "http://omrah.feckrah.com/public/api/specific_trip_type_api",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "type_id",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"description": " specific trip type"
+			},
+			"response":
+			[
+		       {
+    "data": [
+        {
+            "id": 1,
+            "type_name_ar": "العادى",
+            "type_name_en": "Regular",
+            "type_details_ar": "باص عادى \r\n بدون وجبة",
+            "type_details_en": "Regular bus \r\n no meal",
+            "created_at": null,
+            "updated_at": null
+        }
+    ],
+    "status": true,
+    "error": ""
+}
+			]
+		},
+		
+					{
+			"name": "http://omrah.feckrah.com/public/api/singUp_api",
+			"request": {
+				"url": "http://omrah.feckrah.com/public/api/singUp_api",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "firstName",
+							"value": "aaaa",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "aa",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "aa@s.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "12345678",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "12345678",
+							"type": "text"
+						},
+						{
+							"key": "country_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "city_id",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "rteyry",
+							"type": "text"
+						}
+					]
+				},
+				"description": " add new user "
+			},
+			"response":
+			[
+		                {
+    "data": {
+        "name": "Aaaa Aa",
+        "email": "aa@s.com",
+        "address": "thmtekh",
+        "phone": "12345678",
+        "userToken": "fECJCk0dlxMh3Xwz8iIiluyL7ACcp3cwxtSSU2KK03fZjq1soY5MsvArhv99"
+    },
+    "status": true,
+    "error": ""
+}
+			]
+		},
+		
+					{
+			"name": "http://omrah.feckrah.com/public/api/singIn_api",
+			"request": {
+				"url": "http://omrah.feckrah.com/public/api/singIn_api",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "aa@s.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "12345678",
+							"type": "text"
+						}
+					]
+				},
+				"description": " login user"
+			},
+			"response":
+			[
+		       {
+    "data": {
+        "name": "aaaa aa",
+        "email": "aa@s.com",
+        "address": "thmtekh",
+        "phone": "12345678",
+        "userToken": "fECJCk0dlxMh3Xwz8iIiluyL7ACcp3cwxtSSU2KK03fZjq1soY5MsvArhv99"
+    },
+    "status": true,
+    "error": ""
+}
+			]
+		},
+		
+					{
+			"name": "http://omrah.feckrah.com/public/api/changePassword_api",
+			"request": {
+				"url": "http://omrah.feckrah.com/public/api/changePassword_api",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "user_token",
+							"value": "fECJCk0dlxMh3Xwz8iIiluyL7ACcp3cwxtSSU2KK03fZjq1soY5MsvArhv99",
+							"type": "text"
+						},
+							{
+							"key": "new_password",
+							"value": "1234567",
+							"type": "text"
+						}
+					]
+				},
+				"description": " change password"
+			},
+			"response":
+			[
+		          {
+    "data": "Update password Successfully",
+    "status": true,
+    "error": ""
+}
+			]
+		},
+		
+		{
+			"name": "http://omrah.feckrah.com/public/api/updatedProfile_api",
+			"request": {
+				"url": "http://omrah.feckrah.com/public/api/updatedProfile_api",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "firstName",
+							"value": "testing",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "aa",
+							"type": "text"
+						},
+						{
+							"key": "user_token",
+							"value": "fECJCk0dlxMh3Xwz8iIiluyL7ACcp3cwxtSSU2KK03fZjq1soY5MsvArhv99",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "12345678",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "ewrrrw",
+							"type": "text"
+						}
+					]
+				},
+				"description": "  update user profile"
+			},
+			"response":
+			[
+		           {
+    "data": "Update profile successfully",
+    "status": true,
+    "error": ""
+}
+			]
+		},
+		
+		{
+			"name": "http://omrah.feckrah.com/public/api/profile_api",
+			"request": {
+				"url": "http://omrah.feckrah.com/public/api/profile_api",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "user_token",
+							"value": "fECJCk0dlxMh3Xwz8iIiluyL7ACcp3cwxtSSU2KK03fZjq1soY5MsvArhv99",
+							"type": "text"
+						}
+					]
+				},
+				"description": " get profile data"
+			},
+			"response":
+			[
+		             {
+    "data": {
+        "name": "testing aa",
+        "email": "aa@s.com",
+        "address": "thmtekh",
+        "phone": "12345678",
+        "image": "public/upload/users/"
+    },
+    "status": true,
+    "error": ""
+}
+			]
+		},
+		
+		{
+			"name": "http://omrah.feckrah.com/public/api/contactUs_api",
+			"request": {
+				"url": "http://omrah.feckrah.com/public/api/contactUs_api",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "lang",
+							"value": "ar",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "terms and conditions",
+							"type": "text"
+						}
+					]
+				},
+				"description": " terms and conditions"
+			},
+			"response":
+			[
+		            {
+    "data": {
+        "name": "الشروط والاحكام",
+        "description": "الشروط والأحكام* تعني هذه الشروط والأحكام والتي قد تخضع للتعديل أو التغيير من وقت إلى آخر الاستخدام المشروع للدخول إلى موقع وتطبيق حليمه * يجب ألا يقل عمرك عن 18 عاما ولا يزيد عن 60 عاما. * أن تكون ذا أهلية قانونية كاملة للتعاقد والتعامل.* تقر وتتعهد بأنك تتمتع بالحق والقدرة القانونية على استخدام موقع وتطبيق حليمه حسب ما هو منصوص عليه في هذه الشروط والأحكام.* تقر بأن أي استخدام تقوم به لموقع وتطبيق حليمه سيكون حسب ما هو منصوص عليه في الشروط التالية:* لن تقوم بنسخ، تحميل، إعادة إنتاج، إعادة نشر، تأطير، بث، أو إرسال بأي شكل من الأشكال أي من المواد التي يوفرها موقع وتطبيق حليمه باستثناء لاستخداماتك الشخصية المنزلية غير التجارية فقط.* تلتزم بالقواعد المحددة التي تنطبق على أي ترويج تشارك فيه بأي شكل من خلال موقع وتطبيق حليمه* تلتزم بعدم القيام بأي شيء يكون من شأنه التأثير على تشغيل أو أمن موقع وتطبيق حليمه  أو يتسبب في انزعاج غير منطقي أو إساءة أو تعطيل أي من المستخدمين الآخرين أو العاملين لدينا. * يجب ان لا تكون ممن سبق واستفاد من خدمات  حليمه وتم منعك أو حظرك من استخدام التطبيق أو الموقع.* يجب ان لا تكون منافسا لـ حليمه أو تقدم أي منتج مشابه لما تقدمه حليمه.* يتمثل المستخدم ومزود الخدمة لكافة القوانين واللوائح المعمول بها داخل الدولة التي تم تقديم الخدمة فيها.* يجب ان تقدم معلومات صحيحه ودقيقه لـ حليمه كما يجب عليك الالتزام لأي اشعارات تقوم بها حليمه فيما يخص الخدمات التي تقدمها حليمه لضمان عدم تعرقل أي عمليات تشغيليه تقوم بها حليمه.* يجب ان لا يكون استخدامك لخدمات  مسببا لأي إيذاء او مضايقه او ازعاج لأي شخص كان.* المحافظة على كامل المحتويات والارقام السرية للدخول لحسابك بشكل امان.* يجب ان تقدم لنا كل ما يطلب منك من الأوراق التي تثبت لنا هويتك او المنزل الخاص بك كما تحدد من حليمه.* يحق لـ حليمه رفض تقديم أي خدمه أو استخدام للتطبيق دون ان تبدي لك الأسباب.* لا يحق لك إلغاء أي خدمة بعد مرور 3 دقائق من تأكيد طلبها من التطبيق أو الموقع وفي حال تم إلغاء الطلب فيتوجب عليك دفع غرامه قدرها 50 ريال سعودي مقابل الغاء الخدمة بعد طلبها.* من أجل الوصول إلى موقع وتطبيق حليمه، ستحتاج إلى الوصول إلى الإنترنت. تتحمل مسؤولية أي اتصال، أو خدمة أو رسوم مرتبطة بالوصول إلى الإنترنت وتوفير كافة المعدات اللازمة لتمكينك من الاتصال بالإنترنت (بما في ذلك الحاسوب والمودم وغيرها من الأجهزة الضرورية للوصول) نظرا لمحدودية قدرة كافة أجهزة الخادم (سيرفر) واستخدامها من قبل العديد من الأشخاص في الوقت نفسه، فإنك تلتزم بعدم استخدام موقع وتطبيق حليمه بأي شكل من الأشكال التي تؤدي إلى تخريب أو تتجاوز قدرة تحمل أجهزة الخادم (سيرفر) لدينا أو أي شبكة مرتبطة بأي من خوادمنا. كما يجب أن تمتنع عن استخدام موقع وتطبيق حليمه بأي شكل من الأشكال يؤدي، أو قد يؤدي منطقيا، بالتدخل في استخدام أي طرف آخر لموقع وتطبيق حليمه على نحو يخالف، أو من المحتمل أن يخالف، أي قوانين مرعية ومطبقة، أو حقوق أو استحقاقات قانونية لأي طرف آخر وذلك طبقا لكافة القوانين المطبقة.* توافق على الامتناع عن الأمور التالية (سواء قمت أنت بها شخصيا أو من خلال طرف ثالث): استخدام عملية آلية لمعالجة، مراقبة، نسخ، استخراج أي صفحات موجودة على موقع وتطبيق حليمه، أو أي معلومات، أو محتوى أو بيانات يحتويها أو يتم الوصول إليها عن طريق موقع وتطبيق حليمه، دون الحصول على موافقة خطية مسبقة من قبلنا.* استخدام عملية آلية لتجميع أو دمج المعلومات، أو المحتوى أو البيانات التي يحتويها أو يمكن الوصول إليها عن طريق موقع وتطبيق حليمه مع المعلومات، أو المواد أو البيانات التي يتم الوصول إليها عن طريق، أو التي يكون مصدرها، طرف ثالث.* استخدام أي عملية آلية للتدخل في أو محاولة التدخل في طريقة العمل السليمة لموقع وتطبيق حليمه.* القيام بأي فعل يكون من شأنه فرض حمل كبير بشكل غير منطقي أو غير متناسب مع البنية التحتية المتاحة أو النطاق الترددي لموقع وتطبيق حليمه.* تطبيق هندسة عكسية، أو جمع عكسي، أو تفكيك، أو أي عمل آخر من شأنه اكتشاف رمز مصدري أو غيره من الصيغ الحسابية أو المعالجات فيما يخص برنامج الحاسوب المستخدم في البنية التحتية والعمليات المتعلقة بموقع وتطبيق حليمه.* نسخ، إعادة إنتاج، تغيير، تعديل، اشتقاق أعمال من، أو إقامة عرض عام، لأي جزء من محتوى موقع وتطبيق حليمه دون الموافقة الخطية المسبقة من قبلنا."
+    },
+    "status": false,
+    "error": ""
+}
+			]
+		},
+		
+		
+		
+		
+		
+		
+		
+			{
+			"name": "http://omrah.feckrah.com/public/api/contactUs_api",
+			"request": {
+				"url": "http://omrah.feckrah.com/public/api/contactUs_api",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "lang",
+							"value": "ar",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "contact-us",
+							"type": "text"
+						}
+					]
+				},
+				"description": " contact-us"
+			},
+			"response":
+			[
+		           {
+    "data": {
+        "name": "اتصل بنا",
+        "description": "مرحبايمكنك الاتصال بنا فى اي وقت"
+    },
+    "status": false,
+    "error": ""
+}
+				   ]
+		},
+		
+		{
+			"name": "http://omrah.feckrah.com/public/api/restPassword_api",
+			"request": {
+				"url": "http://omrah.feckrah.com/public/api/restPassword_api",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "aa@s,com",
+							"type": "text"
+						}
+					]
+				},
+				"description": " reset user password "
+			},
+			"response":
+			[
+		          {
+    "data": "We have e-mailed your password reset link!",
+    "status": true,
+    "error": ""
+}
+			]
+		}
+			
+	]
+}

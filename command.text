@@ -1,0 +1,31 @@
+sudo chown -R $USER FOLDER_NAME ===> write access
+sudo killall -s KILL node
+sudo react-native start --port=8088
+
+192.168.1.10:8081 // configring port and ip address on mobile device
+hostname -I // get ip address on linux
+cd android
+./gradlew clean
+adb kill-server
+adb start-server
+pulseaudio -D
+ ./gradlew assemblerelease
+
+//open menu
+sudo adb shell input keyevent KEYCODE_MENU
+// more detail error
+./gradlew assembleRelease --info
+
+// running on the device
+android/app/src/main/assets  // check if exist
+cd android
+./gradlew clean
+react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res
+
+// run android emulator
+cd Android/Sdk/emulator && ./emulator -avd Pixel_XL_API_27
+cd Android/Sdk/emulator && ./emulator -avd Nexus_5X_API_28_2
+
+sudo bash -c 'echo "$(logname) ALL=(ALL:ALL) NOPASSWD: ALL" | (EDITOR="tee -a" visudo)'
+./gradlew assembleRelease
+react-native run-android --variant=release

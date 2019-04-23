@@ -1,13 +1,18 @@
 import React, { Component } from "react";
 import { Text, View } from "react-native";
 
+import Header from "../components/AppHeader";
+import Tabs from "../navigators/MatierialTop";
+import Localization from "../localization/localization";
+
 import { connect } from "react-redux";
 
 class index extends Component {
   render() {
     return (
       <View>
-        <Text> {this.props.rtl ? "rtl" : "ltr"} </Text>
+        <Header name={Localization.myOrders} />
+        <Tabs />
       </View>
     );
   }

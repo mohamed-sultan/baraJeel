@@ -1,11 +1,10 @@
 import React, { Component } from "react";
+import { BackHandler, Alert, StatusBar } from "react-native";
 import { Provider } from "react-redux";
-import { createStore, applyMiddleware } from "redux";
 
 import { persistStore } from "redux-persist";
 import { PersistGate } from "redux-persist/es/integration/react";
 
-import { BackHandler, Alert } from "react-native";
 import reducers from "./src/app/reducers";
 import localization from "./src/app/localization/localization";
 
@@ -17,15 +16,8 @@ import SplashScreen from "react-native-splash-screen";
 import ToastContainer from "./src/app/components/ToastContainer";
 
 import store from "./src/app/store";
+import { Colors } from "./src/app/styles";
 
-export const STORE = createStore(reducers, {}, applyMiddleware(middleware));
-export const DoToastNow = (ms, color = "gray", duration = 500) =>
-  STORE.dispatch({
-    type: "dotoast",
-    ms,
-    color,
-    duration
-  });
 class Main extends Component {
   constructor(props) {
     super(props);
@@ -46,6 +38,7 @@ class Main extends Component {
     if (!this.state.ready) return null;
     return (
       <React.Fragment>
+        <StatusBar backgroundColor={Colors.mainDark} barStyle="light-content" />
         <RootNavigator />
         <NetInfo />
       </React.Fragment>

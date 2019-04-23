@@ -10,6 +10,9 @@ import Localization from "../localization/localization";
 
 import Main from "../pages/index";
 import ChooseLanguage from "../pages/ChooseLanguage";
+import OrdersScreen from "../pages/index";
+
+import AboutUsScreen from "../pages/AboutUsScreen";
 
 import { Colors } from "../styles";
 import { connect } from "react-redux";
@@ -17,6 +20,7 @@ import { connect } from "react-redux";
 class Root extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       DRAWER: createBottomTabNavigator(
         {
@@ -33,7 +37,7 @@ class Root extends React.Component {
               )
             })
           },
-          Main: {
+          Profile: {
             screen: Main,
             navigationOptions: () => ({
               tabBarIcon: ({ focused, tintColor }) => (
@@ -46,8 +50,8 @@ class Root extends React.Component {
               )
             })
           },
-          H: {
-            screen: ChooseLanguage,
+          Orders: {
+            screen: OrdersScreen,
             navigationOptions: () => ({
               tabBarIcon: ({ focused, tintColor }) => (
                 <View style={styles.parentIcon}>
@@ -59,8 +63,8 @@ class Root extends React.Component {
               )
             })
           },
-          M: {
-            screen: Main,
+          About: {
+            screen: AboutUsScreen,
             navigationOptions: () => ({
               tabBarIcon: ({ focused, tintColor }) => (
                 <View style={styles.parentIcon}>
@@ -75,8 +79,9 @@ class Root extends React.Component {
         },
         {
           order: props.rtl
-            ? ["Home", "Main", "H", "M"]
-            : ["Home", "Main", "H", "M"].reverse(),
+            ? ["Home", "Profile", "Orders", "About"].reverse()
+            : ["Home", "Profile", "Orders", "About"],
+          initialRouteName: "Home",
           tabBarOptions: {
             activeTintColor: "white",
             inactiveTintColor: "gray",
@@ -97,7 +102,11 @@ class Root extends React.Component {
       )
     };
   }
-
+  componentWillMount() {
+    console.log("====================================");
+    console.log(this.props.rtl);
+    console.log("====================================");
+  }
   componentWillReceiveProps(nxt) {
     console.log("=============new props=======================");
     console.log(nxt);
@@ -118,8 +127,8 @@ class Root extends React.Component {
               )
             })
           },
-          Main: {
-            screen: Main,
+          Profile: {
+            screen: AboutUsScreen,
             navigationOptions: () => ({
               tabBarIcon: ({ focused, tintColor }) => (
                 <View style={styles.parentIcon}>
@@ -131,8 +140,8 @@ class Root extends React.Component {
               )
             })
           },
-          H: {
-            screen: ChooseLanguage,
+          Orders: {
+            screen: OrdersScreen,
             navigationOptions: () => ({
               tabBarIcon: ({ focused, tintColor }) => (
                 <View style={styles.parentIcon}>
@@ -144,8 +153,8 @@ class Root extends React.Component {
               )
             })
           },
-          M: {
-            screen: Main,
+          About: {
+            screen: AboutUsScreen,
             navigationOptions: () => ({
               tabBarIcon: ({ focused, tintColor }) => (
                 <View style={styles.parentIcon}>
@@ -159,10 +168,10 @@ class Root extends React.Component {
           }
         },
         {
-          initialRouteName: "Home",
           order: this.props.rtl
-            ? ["Home", "Main", "H", "M"]
-            : ["Home", "Main", "H", "M"].reverse(),
+            ? ["Home", "Profile", "Orders", "About"]
+            : ["Home", "Profile", "Orders", "About"].reverse(),
+          initialRouteName: "Home",
           tabBarOptions: {
             activeTintColor: "white",
             inactiveTintColor: "gray",

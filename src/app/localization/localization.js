@@ -27,7 +27,7 @@ export default (localization = new LocalizedStrings({
     writeNotes: "write notes",
     myOrders: "my orders",
     RequestPending: "pending ",
-    RequestDone: "Done",
+    RequestDone: "done",
     newRequest: "new",
     requestNumber: "request number",
     service: "service",
@@ -44,7 +44,9 @@ export default (localization = new LocalizedStrings({
     confirm: "confirm",
     close: "close",
     next: "next",
-    yourLocation: "your location"
+    yourLocation: "your location",
+    lorem:
+      "  Duis amet eiusmod laboris nulla adipisicing velit. Ea ut officiaculpa ipsum veniam ut deserunt tempor voluptate dolor occaecat animnisi quis. Consequat nisi ex nisi amet est."
   },
   ar: {
     home: "الرئسيه",
@@ -89,6 +91,8 @@ export default (localization = new LocalizedStrings({
     confirm: "تاكيد",
     close: "اغلاق",
     next: "التالى",
-    yourLocation: "موقعك"
+    yourLocation: "موقعك",
+    lorem:
+      "لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  "
   }
 }));

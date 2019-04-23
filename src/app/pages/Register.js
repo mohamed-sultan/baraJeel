@@ -60,7 +60,6 @@ class Register extends Component {
             onSubmit={() => alert("submit")}
             validationSchema={Yup.object().shape({
               userName: Yup.string()
-                .email()
                 .required(localization.userNameError),
               email: Yup.string()
                 .email()

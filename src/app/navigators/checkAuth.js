@@ -2,6 +2,7 @@ import React from "react";
 import { ActivityIndicator, AsyncStorage, StatusBar, View } from "react-native";
 
 import { connect } from "react-redux";
+import Localization from "../localization/localization";
 
 class AuthLoadingScreen extends React.Component {
   constructor(props) {
@@ -16,6 +17,7 @@ class AuthLoadingScreen extends React.Component {
     //   this.props.user.userToken.length > 5;
 
     // this.props.navigation.navigate(userToken ? "HomeNav" : "AuthNav");
+    Localization.setLanguage(this.props.rtl ? "ar" : "en");
     this.props.navigation.navigate("HomeNav");
   };
 
@@ -31,7 +33,8 @@ class AuthLoadingScreen extends React.Component {
 
 const mapState = state => {
   return {
-    ...state.auth
+    ...state.auth,
+    ...state.rtl
   };
 };
 

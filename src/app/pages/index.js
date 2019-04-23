@@ -1,12 +1,22 @@
 import React, { Component } from "react";
 import { Text, View } from "react-native";
 
-export default class index extends Component {
+import { connect } from "react-redux";
+
+class index extends Component {
   render() {
     return (
       <View>
-        <Text> Main </Text>
+        <Text> {this.props.rtl ? "rtl" : "ltr"} </Text>
       </View>
     );
   }
 }
+
+const mapState = state => {
+  return {
+    ...state.rtl
+  };
+};
+
+export default connect(mapState)(index);

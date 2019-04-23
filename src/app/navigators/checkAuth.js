@@ -10,10 +10,10 @@ class AuthLoadingScreen extends React.Component {
   }
 
   _bootstrapAsync = async () => {
-    const userToken =
-      this.props.user !== null &&
-      this.props.user.userToken &&
-      this.props.user.userToken.length > 5;
+    // const userToken =
+    //   this.props.user !== null &&
+    //   this.props.user.userToken &&
+    //   this.props.user.userToken.length > 5;
 
     // this.props.navigation.navigate(userToken ? "HomeNav" : "AuthNav");
     this.props.navigation.navigate("HomeNav");

@@ -2,12 +2,13 @@ import React from "react";
 import { createBottomTabNavigator } from "react-navigation";
 
 import Main from "../pages/index";
+import ChooseLanguage from "../pages/ChooseLanguage";
 
 export default (RootNavigator = createBottomTabNavigator({
   Home: {
-    screen: Main,
+    screen: ChooseLanguage,
     navigationOption: {
-      title: "Main",
+      title: "ChooseLanguage",
       header: null
     }
   },

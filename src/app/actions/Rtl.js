@@ -1,4 +1,4 @@
-export const Rtl = (payload = true) => {
+export const ChangeRtl = (payload = true) => {
   return {
     type: "rtl",
     payload

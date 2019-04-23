@@ -9,8 +9,6 @@ import { BackHandler, Alert } from "react-native";
 import reducers from "./src/app/reducers";
 import localization from "./src/app/localization/localization";
 
-import SplashScreen2 from "./app/pages/SplashScreen2";
-import SplashScreen5 from "./app/pages/SplashScreen5";
 import RootNavigator, { middleware } from "./src/app/navigators/RootNavigator";
 
 import NetInfo from "./src/app/components/netinfo";

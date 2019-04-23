@@ -1,6 +1,9 @@
 import LocalizedStrings from "react-native-localization";
 export default (localization = new LocalizedStrings({
   en: {
+    home: "home",
+    profile: "profile",
+
     main: "main",
     request: "request",
     selectYourRequestSpeed: "select your request speed",
@@ -44,6 +47,8 @@ export default (localization = new LocalizedStrings({
     yourLocation: "your location"
   },
   ar: {
+    home: "الرئسيه",
+    profile: "الشخصيه",
     main: "الرئيسية",
     request: "طلب",
     selectYourRequestSpeed: "اختار سرعة طلبك",

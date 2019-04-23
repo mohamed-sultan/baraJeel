@@ -16,6 +16,8 @@ import SplashScreen from "react-native-splash-screen";
 
 import ToastContainer from "./src/app/components/ToastContainer";
 
+import store from "./src/app/store";
+
 export const STORE = createStore(reducers, {}, applyMiddleware(middleware));
 export const DoToastNow = (ms, color = "gray", duration = 500) =>
   STORE.dispatch({
@@ -24,16 +26,37 @@ export const DoToastNow = (ms, color = "gray", duration = 500) =>
     color,
     duration
   });
-const Main = () => (
-  <React.Fragment>
-    <RootNavigator />
-    <NetInfo />
-  </React.Fragment>
-);
+class Main extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      ready: false
+    };
+  }
+  componentWillMount() {
+    this.handle_localization();
+  }
+  handle_localization = () => {
+    let lan = store.getState().rtl.rtl;
+    lan ? localization.setLanguage("ar") : localization.setLanguage("en");
+
+    this.setState({ ready: true });
+  };
+  render() {
+    if (!this.state.ready) return null;
+    return (
+      <React.Fragment>
+        <RootNavigator />
+        <NetInfo />
+      </React.Fragment>
+    );
+  }
+}
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {};
+
     setTimeout(() => {
       SplashScreen.hide();
     }, 2000);
@@ -41,6 +64,7 @@ export default class App extends Component {
   componentWillMount() {
     BackHandler.addEventListener("hardwareBackPress", this.backPressed);
   }
+
   componentWillUnmount() {
     BackHandler.removeEventListener("hardwareBackPress", this.backPressed);
   }
@@ -61,12 +85,11 @@ export default class App extends Component {
     );
     return true;
   };
-  store = createStore(reducers, {}, applyMiddleware(middleware));
 
   render() {
-    const persistor = persistStore(this.store);
+    const persistor = persistStore(store);
     return (
-      <Provider store={this.store}>
+      <Provider store={store}>
         <PersistGate persistor={persistor}>
           <Main />
         </PersistGate>

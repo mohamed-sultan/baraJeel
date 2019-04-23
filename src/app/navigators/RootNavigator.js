@@ -31,6 +31,7 @@ export const RootNavigator = createSwitchNavigator(
     }
   },
   {
+    initialRouteName:'AuthNav',
     navigationOptions: {
       header: null
     }

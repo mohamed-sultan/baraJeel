@@ -15,6 +15,7 @@ export default (localization = new LocalizedStrings({
     didYouForgetPassword: "did you forget your password",
     login: "login",
     donotHaveAccout: "dont't have account?",
+    haveAccout: "Already have account ?",
     register: "register",
     userName: "user name",
     phoneNumber: "phone number",
@@ -41,7 +42,12 @@ export default (localization = new LocalizedStrings({
     confirm: "confirm",
     close: "close",
     next: "next",
-    yourLocation: "your location"
+    yourLocation: "your location",
+    emailError:'please enter avalid email',
+    passwordError:'please enter a valid password',
+    userNameError:'userName not Available',
+    phoneError:'invalid Phone Number',
+
   },
   ar: {
     main: "الرئيسية",
@@ -58,6 +64,7 @@ export default (localization = new LocalizedStrings({
     didYouForgetPassword: "هل نسيت كلمه المرور",
     login: "دخول",
     donotHaveAccout: "لاتمتلك حساب؟",
+    haveAccout: "لديك حساب بالفعل ؟",
     register: "تسجيل",
     userName: "اسم المستخدم",
 
@@ -84,6 +91,11 @@ export default (localization = new LocalizedStrings({
     confirm: "تاكيد",
     close: "اغلاق",
     next: "التالى",
-    yourLocation: "موقعك"
+    yourLocation: "موقعك",
+    emailError:'من فضلك أدخل إيميل صحيح',
+    passwordError:'من فضلك أدخل الرقم السري',
+    userNameError:'إسم المستخدم مستخدم من قبل',
+    phoneError:'يرجي إدخال رقم جوال صحيح',
+
   }
 }));

@@ -19,6 +19,12 @@ target 'Trust' do
 
     pod 'react-native-maps', :path => '../node_modules/react-native-maps'
 
+    pod 'react-native-fbsdk', :path => '../node_modules/react-native-fbsdk'
+
+    pod 'ReactNativeLocalization', :path => '../node_modules/react-native-localization'
+
+    pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
   end
 
   target 'TrustTests' do

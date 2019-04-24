@@ -1,5 +1,5 @@
 const initialState = {
-  rtl: null
+  rtl:true
 };
 
 export default (state = initialState, { type, payload }) => {

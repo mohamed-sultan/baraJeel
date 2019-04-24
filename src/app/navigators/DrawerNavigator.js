@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Platform, Keyboard } from "react-native";
 import { createBottomTabNavigator } from "react-navigation";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import Entypo from "react-native-vector-icons/Entypo";
@@ -13,7 +13,10 @@ import ChooseLanguage from "../pages/ChooseLanguage";
 import OrdersScreen from "../pages/index";
 
 import AboutUsScreen from "../pages/AboutUsScreen";
+import ProfileScreen from "../pages/profile";
 
+import ProfileStack from "./profileStack";
+import HomeStack from "./HomeStack";
 import { Colors } from "../styles";
 import { connect } from "react-redux";
 
@@ -22,10 +25,11 @@ class Root extends React.Component {
     super(props);
 
     this.state = {
+      visible: true,
       DRAWER: createBottomTabNavigator(
         {
           Home: {
-            screen: ChooseLanguage,
+            screen: HomeStack,
             navigationOptions: () => ({
               tabBarIcon: ({ focused, tintColor }) => (
                 <View style={styles.parentIcon}>
@@ -38,7 +42,7 @@ class Root extends React.Component {
             })
           },
           Profile: {
-            screen: Main,
+            screen: ProfileStack,
             navigationOptions: () => ({
               tabBarIcon: ({ focused, tintColor }) => (
                 <View style={styles.parentIcon}>
@@ -83,6 +87,7 @@ class Root extends React.Component {
             : ["Home", "Profile", "Orders", "About"],
           initialRouteName: "Home",
           tabBarOptions: {
+            keyboardHidesTabBar: true,
             activeTintColor: "white",
             inactiveTintColor: "gray",
             style: {
@@ -102,20 +107,13 @@ class Root extends React.Component {
       )
     };
   }
-  componentWillMount() {
-    console.log("====================================");
-    console.log(this.props.rtl);
-    console.log("====================================");
-  }
+
   componentWillReceiveProps(nxt) {
-    console.log("=============new props=======================");
-    console.log(nxt);
-    console.log("===============new props=====================");
     this.setState({
       DRAWER: createBottomTabNavigator(
         {
           Home: {
-            screen: ChooseLanguage,
+            screen: HomeStack,
             navigationOptions: () => ({
               tabBarIcon: ({ focused, tintColor }) => (
                 <View style={styles.parentIcon}>
@@ -128,7 +126,7 @@ class Root extends React.Component {
             })
           },
           Profile: {
-            screen: AboutUsScreen,
+            screen: ProfileStack,
             navigationOptions: () => ({
               tabBarIcon: ({ focused, tintColor }) => (
                 <View style={styles.parentIcon}>
@@ -173,6 +171,7 @@ class Root extends React.Component {
             : ["Home", "Profile", "Orders", "About"].reverse(),
           initialRouteName: "Home",
           tabBarOptions: {
+            keyboardHidesTabBar: true,
             activeTintColor: "white",
             inactiveTintColor: "gray",
             style: {

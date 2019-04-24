@@ -3,9 +3,11 @@ package com.trust.trust;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
-import com.taessina.paypal.RNPaypalWrapperPackage;
+import com.reactlibrary.RNPaypalPackage;
+import com.airbnb.android.react.maps.MapsPackage;
+import px.fluidicslider.RNFluidicSliderPackage;
 // import com.reactlibrary.RNPaypalPackage;
-//import com.airbnb.android.react.maps.MapsPackage;
+import com.airbnb.android.react.maps.MapsPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
 import com.babisoft.ReactNativeLocalization.ReactNativeLocalizationPackage;
@@ -38,10 +40,15 @@ public class MainApplication extends Application implements ReactApplication {
 
     @Override
     protected List<ReactPackage> getPackages() {
-      return Arrays.<ReactPackage>asList(new MainReactPackage(), new RNPaypalWrapperPackage(),
+      return Arrays.<ReactPackage>asList(new MainReactPackage(),
+            new RNPaypalPackage(),
+            //new MapsPackage(),
+            new RNFluidicSliderPackage(),
           // new RNPaypalPackage(),
-          // new MapsPackage(),
-          new SplashScreenReactPackage(), new FBSDKPackage(mCallbackManager), new ReactNativeLocalizationPackage(),
+           new MapsPackage(),
+          new SplashScreenReactPackage(),
+           new FBSDKPackage(mCallbackManager),
+            new ReactNativeLocalizationPackage(),
           new VectorIconsPackage());
     }
 

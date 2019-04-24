@@ -11,23 +11,29 @@ import Ion from "react-native-vector-icons/Ionicons";
 import { Colors } from "../styles";
 class AppHeader extends PureComponent {
   render() {
-    const { name, hasback, rtl } = this.props;
-    const arrowStyle = rtl ? { right: 20 } : { left: 20 };
+    const { name, hasback, rtl, navigation } = this.props;
+    const arrowStyle = rtl ? { right: 15 } : { left: 15 };
     return (
       <View style={styles.container}>
         {hasback && (
-          <TouchableOpacity onPress={() => alert("awesome")}>
+          <TouchableOpacity
+            style={[
+              {
+                position: "absolute",
+                justifyContent: "center",
+                alignItems: "center",
+                top: hp("5%"),
+                zIndex: 1000
+              },
+
+              arrowStyle
+            ]}
+            onPress={() => navigation.goBack()}
+          >
             <Ion
               name={rtl ? "md-arrow-forward" : "md-arrow-back"}
               color="white"
-              size={30}
-              style={[
-                {
-                  position: "absolute",
-                  top: hp("4%")
-                },
-                arrowStyle
-              ]}
+              size={25}
             />
           </TouchableOpacity>
         )}

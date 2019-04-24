@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Dimensions } from "react-native";
 
 import { createMaterialTopTabNavigator } from "react-navigation";
 
@@ -12,6 +12,8 @@ import { connect } from "react-redux";
 import OrderDone from "../pages/ordersDone";
 import OrdersPending from "../pages/ordersPending";
 import OrdersNew from "../pages/ordersNew";
+
+const { height } = Dimensions.get("window");
 
 class MatierialTop extends Component {
   constructor(props) {
@@ -44,7 +46,7 @@ class MatierialTop extends Component {
           order: props.rtl
             ? ["OrdersNew", "OrdersPending", "OrderDone"]
             : ["OrdersNew", "OrdersPending", "OrderDone"].reverse(),
-          initialRouteName: "OrdersNew",
+          initialRouteName: "OrderDone",
           tabBarPosition: "top",
           swipeEnabled: true,
           animationEnabled: true,
@@ -52,7 +54,7 @@ class MatierialTop extends Component {
             activeTintColor: "gray",
             inactiveTintColor: "black",
             style: {
-              backgroundColor: "white"
+              backgroundColor: "#f1f1f1"
             },
             labelStyle: {
               textAlign: "center",
@@ -97,7 +99,7 @@ class MatierialTop extends Component {
           order: this.props.rtl
             ? ["OrdersNew", "OrdersPending", "OrderDone"]
             : ["OrdersNew", "OrdersPending", "OrderDone"].reverse(),
-          initialRouteName: "OrdersNew",
+          initialRouteName: "OrderDone",
           tabBarPosition: "top",
           swipeEnabled: true,
           animationEnabled: true,
@@ -105,7 +107,7 @@ class MatierialTop extends Component {
             activeTintColor: "gray",
             inactiveTintColor: "black",
             style: {
-              backgroundColor: "white"
+              backgroundColor: "#f1f1f1"
             },
             labelStyle: {
               textAlign: "center",
@@ -124,7 +126,7 @@ class MatierialTop extends Component {
   render() {
     const { Tab } = this.state;
     return (
-      <View style={{ height: 100 }}>
+      <View style={{ height }}>
         <Tab />
       </View>
     );

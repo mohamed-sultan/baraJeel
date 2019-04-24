@@ -3,7 +3,6 @@ export default (localization = new LocalizedStrings({
   en: {
     home: "home",
     profile: "profile",
-
     main: "main",
     request: "request",
     selectYourRequestSpeed: "select your request speed",
@@ -18,6 +17,7 @@ export default (localization = new LocalizedStrings({
     didYouForgetPassword: "did you forget your password",
     login: "login",
     donotHaveAccout: "dont't have account?",
+    haveAccout: "Already have account ?",
     register: "register",
     userName: "user name",
     phoneNumber: "phone number",
@@ -46,7 +46,15 @@ export default (localization = new LocalizedStrings({
     next: "next",
     yourLocation: "your location",
     lorem:
-      "  Duis amet eiusmod laboris nulla adipisicing velit. Ea ut officiaculpa ipsum veniam ut deserunt tempor voluptate dolor occaecat animnisi quis. Consequat nisi ex nisi amet est."
+      "  Duis amet eiusmod laboris nulla adipisicing velit. Ea ut officiaculpa ipsum veniam ut deserunt tempor voluptate dolor occaecat animnisi quis. Consequat nisi ex nisi amet est.",
+    emailError: "please enter avalid email",
+    passwordError: "please enter a valid password",
+    userNameError: "userName not Available",
+    phoneError: "invalid Phone Number",
+    orderNumber: "order number",
+    orderDate: "order date",
+    orderSpeed: "order speed",
+    order: "oreder"
   },
   ar: {
     home: "الرئسيه",
@@ -65,6 +73,7 @@ export default (localization = new LocalizedStrings({
     didYouForgetPassword: "هل نسيت كلمه المرور",
     login: "دخول",
     donotHaveAccout: "لاتمتلك حساب؟",
+    haveAccout: "لديك حساب بالفعل ؟",
     register: "تسجيل",
     userName: "اسم المستخدم",
 
@@ -93,6 +102,14 @@ export default (localization = new LocalizedStrings({
     next: "التالى",
     yourLocation: "موقعك",
     lorem:
-      "لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  "
+      "لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  لوريم  ",
+    emailError: "من فضلك أدخل إيميل صحيح",
+    passwordError: "من فضلك أدخل الرقم السري",
+    userNameError: "إسم المستخدم مستخدم من قبل",
+    phoneError: "يرجي إدخال رقم جوال صحيح",
+    orderNumber: "رقم الطلب",
+    orderDate: "تاريخ الطلب",
+    orderSpeed: "سرعه الطلب",
+    order: "طلب"
   }
 }));

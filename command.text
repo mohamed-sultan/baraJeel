@@ -2,6 +2,9 @@ sudo chown -R $USER FOLDER_NAME ===> write access
 sudo killall -s KILL node
 sudo react-native start --port=8088
 
+keyboard react navigation        android:windowSoftInputMode="stateAlwaysHidden|adjustPan|adjustResize"
+
+
 192.168.1.10:8081 // configring port and ip address on mobile device
 hostname -I // get ip address on linux
 cd android

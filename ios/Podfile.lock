@@ -11,11 +11,20 @@ PODS:
     - FBSDKCoreKit
   - FBSDKShareKit (4.38.1):
     - FBSDKCoreKit
+  - React (0.11.0):
+    - React/Core (= 0.11.0)
+  - react-native-maps (0.23.0):
+    - React
+  - react-native-splash-screen (3.2.0):
+    - React
+  - React/Core (0.11.0)
 
 DEPENDENCIES:
   - FBSDKCoreKit
   - FBSDKLoginKit
   - FBSDKShareKit
+  - react-native-maps (from `../node_modules/react-native-maps`)
+  - react-native-splash-screen (from `../node_modules/react-native-splash-screen`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -23,13 +32,23 @@ SPEC REPOS:
     - FBSDKCoreKit
     - FBSDKLoginKit
     - FBSDKShareKit
+    - React
+
+EXTERNAL SOURCES:
+  react-native-maps:
+    :path: "../node_modules/react-native-maps"
+  react-native-splash-screen:
+    :path: "../node_modules/react-native-splash-screen"
 
 SPEC CHECKSUMS:
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   FBSDKCoreKit: 8d47857400e2f5bdea697a80daff882e91c84ef6
   FBSDKLoginKit: 4621c690d9dd8628031a4791497062183ea34b0d
   FBSDKShareKit: 6ffe22f0a0618eb7424d4104ab0ef3ce9643d42a
+  React: ab1a2e21deb34965c38328d5ec40cc7d12c6050a
+  react-native-maps: 9469741f77f270c605cafec603ce47327dc5b5f8
+  react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
 
-PODFILE CHECKSUM: d26fc719eb9835f5b91dc8963aa163afe763ba49
+PODFILE CHECKSUM: 4ae8b0d9c0f68b66cacaeca03be1a807879cd47e
 
-COCOAPODS: 1.6.0
+COCOAPODS: 1.6.1

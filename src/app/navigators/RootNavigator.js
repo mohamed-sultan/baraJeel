@@ -31,6 +31,7 @@ export const RootNavigator = createSwitchNavigator(
     }
   },
   {
+    initialRouteName: "HomeNav",
     navigationOptions: {
       header: null
     }

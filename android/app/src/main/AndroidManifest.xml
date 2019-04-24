@@ -22,18 +22,21 @@
           <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
    <meta-data
                 android:name="com.google.android.geo.API_KEY"
-                android:value="AIzaSyCL2xt_rWGg1a_sLSMY3ZbHouXaY-iDkjs"/>
+                android:value="AIzaSyCG_vY3gfz57kYLuUXzVqHJ8erPBRlpNfc"/>
       <activity
         android:name=".MainActivity"
         android:label="@string/app_name"
         android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
-        android:windowSoftInputMode="adjustResize">
+        android:screenOrientation="portrait"
+       android:windowSoftInputMode="stateAlwaysHidden|adjustPan">
+
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
       </activity>
       <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
+
 
     </application>
 

@@ -3,6 +3,7 @@ import { createStackNavigator } from "react-navigation";
 import HomeMainScreen from "../pages/HomeMain";
 import HomeOrderScreen from "../pages/HomeOrder";
 import HomeOrderNextScreen from "../pages/HomeOrderNext";
+import HomeExplainScreen from "../pages/HomeExplian";
 
 export default createStackNavigator(
   {
@@ -20,6 +21,12 @@ export default createStackNavigator(
     },
     HomeOrderNextScreen: {
       screen: HomeOrderNextScreen,
+      navigationOptions: {
+        header: null
+      }
+    },
+    HomeExplainScreen: {
+      screen: HomeExplainScreen,
       navigationOptions: {
         header: null
       }

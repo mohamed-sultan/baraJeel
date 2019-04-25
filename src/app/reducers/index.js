@@ -13,11 +13,13 @@ import NavigationReducer from "./NavigationReducer";
 import CurrentRoute from "./currentRoute";
 import netInfoReducers from "./netinfo";
 import RtlReducer from "./rtl";
+import LogOutReaucer from "./logOut";
 
 export default persistCombineReducers(config, {
   nav: NavigationReducer,
   netInfo: netInfoReducers,
   toast: ToastReducer,
   route: CurrentRoute,
-  rtl: RtlReducer
+  rtl: RtlReducer,
+  logout: LogOutReaucer
 });

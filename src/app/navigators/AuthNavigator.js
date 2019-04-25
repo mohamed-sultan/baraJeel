@@ -18,13 +18,6 @@ export default (AuthNavigator = createStackNavigator(
         title: "Register",
         header: null
       }
-    },
-    SelectLnguaeScreen: {
-      screen: SelectLnguaeScreen,
-      navigationOption: {
-        title: "SelectLnguaeScreen",
-        header: null
-      }
     }
   },
   {

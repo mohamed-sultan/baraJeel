@@ -7,7 +7,8 @@ import {
   KeyboardAvoidingView,
   ScrollView,
   TouchableOpacity,
-  Dimensions
+  Dimensions,
+  Image
 } from "react-native";
 import { connect } from "react-redux";
 import MapView, { Marker } from "react-native-maps";
@@ -15,6 +16,7 @@ import MapView, { Marker } from "react-native-maps";
 import Localization from "../localization/localization";
 import Header from "../components/AppHeader";
 import { Colors } from "../styles";
+import LocationIcon from "../../img/loc.png";
 
 const { width, height } = Dimensions.get("window");
 
@@ -24,30 +26,32 @@ class HomeOrder extends Component {
     this.state = {
       val: "",
       initialRegion: {
-        latitude: 37.78825,
-        longitude: -122.4324,
+        latitude: 23.614328,
+        longitude: 58.545284,
         latitudeDelta: 0.0922,
         longitudeDelta: 0.0421
       },
       region: {
-        latitude: 37.78825,
-        longitude: -122.4324,
+        latitude: 23.614328,
+        longitude: 58.545284,
         latitudeDelta: 0.0922,
         longitudeDelta: 0.0421
       },
       coordinate: {
-        latitude: 37.78825,
-        longitude: -122.4324
+        latitude: 23.614328,
+        longitude: 58.545284
       }
     };
   }
 
   onRegionChange(region) {
-    console.log("====================================");
-    console.log(region);
-    console.log("====================================");
     this.setState({ region });
   }
+  _handlePress = () => {
+    this.props.navigation.navigate("HomeOrderNextScreen", {
+      name: this.props.navigation.state.params.name
+    });
+  };
   render() {
     const { rtl } = this.props;
     const styles = StyleSheet.create({
@@ -104,9 +108,6 @@ class HomeOrder extends Component {
       }
     });
     const { name = "" } = this.props.navigation.state.params;
-    _handlePress = () => {
-      alert("awesome");
-    };
 
     return (
       <ScrollView style={{ flex: 1, backgroundColor: "#f1f1f1" }}>
@@ -135,7 +136,13 @@ class HomeOrder extends Component {
                   onDragEnd={e => console.log("onDragEnd", e)}
                   onPress={e => console.log("onPress", e)}
                   draggable
-                />
+                >
+                  <Image
+                    source={LocationIcon}
+                    style={{ height: 30, width: 30 }}
+                    resizeMode="contain"
+                  />
+                </Marker>
               </MapView>
             </View>
 

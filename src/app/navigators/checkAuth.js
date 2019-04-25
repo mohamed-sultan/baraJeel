@@ -18,7 +18,7 @@ class AuthLoadingScreen extends React.Component {
 
     // this.props.navigation.navigate(userToken ? "HomeNav" : "AuthNav");
     Localization.setLanguage(this.props.rtl ? "ar" : "en");
-    this.props.navigation.navigate("HomeNav");
+    this.props.navigation.navigate("AuthNav");
   };
 
   render() {

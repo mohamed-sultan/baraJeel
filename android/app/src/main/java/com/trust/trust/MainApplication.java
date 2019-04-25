@@ -3,6 +3,7 @@ package com.trust.trust;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.reactnative.ivpusic.imagepicker.PickerPackage;
 import com.reactlibrary.RNPaypalPackage;
 import com.airbnb.android.react.maps.MapsPackage;
 import px.fluidicslider.RNFluidicSliderPackage;
@@ -41,9 +42,10 @@ public class MainApplication extends Application implements ReactApplication {
     @Override
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(new MainReactPackage(),
+            new PickerPackage(),
             new RNPaypalPackage(),
             //new MapsPackage(),
-            new RNFluidicSliderPackage(),
+             new RNFluidicSliderPackage(),
           // new RNPaypalPackage(),
            new MapsPackage(),
           new SplashScreenReactPackage(),

@@ -12,6 +12,8 @@ import {
 import Header from "../components/AppHeader";
 import localization from "../localization/localization";
 import { Colors } from "../styles";
+import { connect } from "react-redux";
+import { NavigationEvents } from "react-navigation";
 
 var { height, width } = Dimensions.get("window");
 
@@ -57,10 +59,12 @@ var DATA = [
   { icon: "https://img.icons8.com/color/60px/pen", name: "سباكه" }
 ];
 
-export default class componentName extends Component {
+class componentName extends Component {
   constructor(props) {
     super(props);
     this.state = {};
+
+    // props.navigation.navigate("AuthNav");
   }
 
   _renderItem = ({ item, index }) => {
@@ -81,6 +85,7 @@ export default class componentName extends Component {
     return (
       <View style={styles.container}>
         <Header name={localization.home} />
+
         <FlatList
           style={{ height: height / 1.5, width: "95%", alignSelf: "center" }}
           data={DATA}
@@ -96,6 +101,13 @@ export default class componentName extends Component {
     );
   }
 }
+const mapState = state => {
+  return {
+    ...state.logout
+  };
+};
+
+export default connect(mapState)(componentName);
 
 const styles = StyleSheet.create({
   container: {

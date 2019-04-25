@@ -103,6 +103,8 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+        vectorDrawables.useSupportLibrary = true
+
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
@@ -148,6 +150,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-image-crop-picker')
     compile project(':react-native-splash-screen')
     compile project(':react-native-paypal-lib')
    // compile project(':react-native-maps')

@@ -25,6 +25,8 @@ target 'Trust' do
 
     pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
+    pod 'RNImageCropPicker', :path => '../node_modules/react-native-image-crop-picker'
+
   end
 
   target 'TrustTests' do

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { connect } from "react-redux";
+import { NavigationActions } from "react-navigation";
+import { LogOutAction } from "../actions";
 
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import Header from "../components/AppHeader";
@@ -22,8 +24,19 @@ class componentName extends Component {
   _handleChangeLanguagePress = () => {
     this.props.navigation.navigate("ChangeLanguageScreen", { hasBack: true });
   };
-  _handleLogOutPress = () => {
-    alert("log out pressed");
+  _handleLogOutPress = async () => {
+    // this.props.navigation.navigate("AuthNav");
+
+    // this.props.navigation.navigate("AuthNav", { replaceRoute: true });
+    // this.props.navigation.navigate(
+    //   "AuthNav",
+    //   {},
+    //   NavigationActions.navigate({ routeName: "SignIn" })
+    // );
+    // await this.props.navigation.navigate("Home");
+    // this.props.navigation.navigate("AuthNav");
+
+    this.props.LogOutNow(this.props.navigation);
   };
 
   render() {
@@ -128,5 +141,13 @@ const mapState = state => {
     ...state.rtl
   };
 };
+const mapDispatch = dispatch => {
+  return {
+    LogOutNow: nav => LogOutAction(nav, dispatch)
+  };
+};
 
-export default connect(mapState)(componentName);
+export default connect(
+  mapState,
+  mapDispatch
+)(componentName);

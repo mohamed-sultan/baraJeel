@@ -109,6 +109,18 @@ class Root extends React.Component {
   }
 
   componentWillReceiveProps(nxt) {
+    // if (this.props.logout) {
+    //   this.props.navigtion.navigate("AuthNav");
+    //   return;
+    // }
+    console.log("====================================");
+    console.log(this.props);
+    console.log("====================================");
+    if (this.props.logout) {
+      this.props.navigation.navigate("AuthNav");
+      return;
+    }
+    //  this.props.navigation.navigate("AuthNav");
     this.setState({
       DRAWER: createBottomTabNavigator(
         {

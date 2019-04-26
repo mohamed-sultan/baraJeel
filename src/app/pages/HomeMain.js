@@ -6,7 +6,9 @@ import {
   StyleSheet,
   TouchableOpacity,
   Image,
-  Dimensions
+  Dimensions,
+  RefreshControl,
+  Button
 } from "react-native";
 
 import Header from "../components/AppHeader";
@@ -14,50 +16,11 @@ import localization from "../localization/localization";
 import { Colors } from "../styles";
 import { connect } from "react-redux";
 import { NavigationEvents } from "react-navigation";
-
+import { FetchDepartments } from "../actions/showDepartments";
+import { Toast } from "../actions";
 var { height, width } = Dimensions.get("window");
 
-var DATA = [
-  { icon: "https://img.icons8.com/color/60px/pen", name: "سباكه" },
-  { icon: "https://img.icons8.com/color/60px/pen", name: "سباكه" },
-  { icon: "https://img.icons8.com/color/60px/pen", name: "سباكه" },
-  { icon: "https://img.icons8.com/color/60px/pen", name: "سباكه" },
-  { icon: "https://img.icons8.com/color/60px/pen", name: "سباكه" },
-  { icon: "https://img.icons8.com/color/60px/pen", name: "سباكه" },
-  { icon: "https://img.icons8.com/color/60px/pen", name: "سباكه" },
-  { icon: "https://img.icons8.com/color/60px/pen", name: "سباكه" },
-  { icon: "https://img.icons8.com/color/60px/pen", name: "سباكه" },
-  { icon: "https://img.icons8.com/color/60px/pen", name: "سباكه" },
-  { icon: "https://img.icons8.com/color/60px/pen", name: "سباكه" },
-  { icon: "https://img.icons8.com/color/60px/pen", name: "سباكه" },
-  { icon: "https://img.icons8.com/color/60px/pen", name: "سباكه" },
-  { icon: "https://img.icons8.com/color/60px/pen", name: "سباكه" },
-  { icon: "https://img.icons8.com/color/60px/pen", name: "سباكه" },
-  { icon: "https://img.icons8.com/color/60px/pen", name: "سباكه" },
-  { icon: "https://img.icons8.com/color/60px/pen", name: "سباكه" },
-  { icon: "https://img.icons8.com/color/60px/pen", name: "سباكه" },
-  { icon: "https://img.icons8.com/color/60px/pen", name: "سباكه" },
-  { icon: "https://img.icons8.com/color/60px/pen", name: "سباكه" },
-  { icon: "https://img.icons8.com/color/60px/pen", name: "سباكه" },
-  { icon: "https://img.icons8.com/color/60px/pen", name: "سباكه" },
-  { icon: "https://img.icons8.com/color/60px/pen", name: "سباكه" },
-  { icon: "https://img.icons8.com/color/60px/pen", name: "سباكه" },
-  { icon: "https://img.icons8.com/color/60px/pen", name: "سباكه" },
-  { icon: "https://img.icons8.com/color/60px/pen", name: "سباكه" },
-  { icon: "https://img.icons8.com/color/60px/pen", name: "سباكه" },
-  { icon: "https://img.icons8.com/color/60px/pen", name: "سباكه" },
-  { icon: "https://img.icons8.com/color/60px/pen", name: "سباكه" },
-  { icon: "https://img.icons8.com/color/60px/pen", name: "سباكه" },
-  { icon: "https://img.icons8.com/color/60px/pen", name: "سباكه" },
-  { icon: "https://img.icons8.com/color/60px/pen", name: "سباكه" },
-  { icon: "https://img.icons8.com/color/60px/pen", name: "سباكه" },
-  { icon: "https://img.icons8.com/color/60px/pen", name: "سباكه" },
-  { icon: "https://img.icons8.com/color/60px/pen", name: "سباكه" },
-  { icon: "https://img.icons8.com/color/60px/pen", name: "سباكه" },
-  { icon: "https://img.icons8.com/color/60px/pen", name: "سباكه" },
-  { icon: "https://img.icons8.com/color/60px/pen", name: "سباكه" },
-  { icon: "https://img.icons8.com/color/60px/pen", name: "سباكه" }
-];
+import { DoToast } from "../../../App";
 
 class componentName extends Component {
   constructor(props) {
@@ -67,6 +30,13 @@ class componentName extends Component {
     // props.navigation.navigate("AuthNav");
   }
 
+  componentWillMount() {
+    //  STORE.dispatch({ type: "dotoast", ms: "ddddddddddddddddd" });
+    DoToast("tmmmmmmmmmmmmmmmam");
+  }
+  componentDidMount() {
+    this.props.doToast("sssssssuu uu");
+  }
   _renderItem = ({ item, index }) => {
     return (
       <TouchableOpacity
@@ -76,7 +46,7 @@ class componentName extends Component {
           this.props.navigation.navigate("HomeOrderScreen", { ...item })
         }
       >
-        <Image source={{ uri: item.icon }} style={styles.icon} />
+        <Image source={{ uri: item.photos[0].thumb }} style={styles.icon} />
         <Text style={styles.text}>{item.name}</Text>
       </TouchableOpacity>
     );
@@ -85,10 +55,9 @@ class componentName extends Component {
     return (
       <View style={styles.container}>
         <Header name={localization.home} />
-
         <FlatList
           style={{ height: height / 1.5, width: "95%", alignSelf: "center" }}
-          data={DATA}
+          data={this.props.departments}
           keyExtractor={(item, index) => index}
           renderItem={this._renderItem}
           numColumns={3}
@@ -96,6 +65,12 @@ class componentName extends Component {
           ListFooterComponent={() => (
             <View style={{ height: 30, alignSelf: "stretch" }} />
           )}
+          refreshControl={
+            <RefreshControl
+              refreshing={this.props.loading}
+              onRefresh={() => this.props.getDepartments()}
+            />
+          }
         />
       </View>
     );
@@ -103,11 +78,20 @@ class componentName extends Component {
 }
 const mapState = state => {
   return {
-    ...state.logout
+    ...state.departments
+  };
+};
+const mapDispatch = dispatch => {
+  return {
+    getDepartments: () => FetchDepartments(dispatch),
+    doToast: ms => Toast(ms, dispatch)
   };
 };
 
-export default connect(mapState)(componentName);
+export default connect(
+  mapState,
+  mapDispatch
+)(componentName);
 
 const styles = StyleSheet.create({
   container: {

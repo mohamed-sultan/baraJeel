@@ -111,7 +111,8 @@ class HomeOrder extends Component {
         paddingHorizontal: 10,
         // justifyContent: !this.props.rtl ? "flex-start" : "flex-end",
         // alignItems: "center",
-        justifyContent: this.props.rtl ? "flex-start" : "flex-end"
+        justifyContent: this.props.rtl ? "flex-start" : "flex-end",
+        alignSelf: this.props.rtl ? "flex-end" : "flex-start"
       },
       chexkBoxROwText: {
         paddingHorizontal: 5,

@@ -1,3 +1,6 @@
-export const LogOutAction = (navigation, dispatch) => {
-  dispatch({ type: "logout", payload: true });
+export const LogOutAction = payload => {
+  return {
+    type: "logout",
+    payload
+  };
 };

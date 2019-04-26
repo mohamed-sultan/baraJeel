@@ -1,9 +1,7 @@
 import { DoToast } from "../actions/types";
 
 const initialState = {
-  ms: "wwwww",
-  color: "gray",
-  duration: 1000
+  ms: ""
 };
 
 export default (state = initialState, action) => {
@@ -11,7 +9,7 @@ export default (state = initialState, action) => {
     case DoToast:
       return {
         ...state,
-        duration: String(Date.now())
+        ms: action.ms
       };
 
     default:

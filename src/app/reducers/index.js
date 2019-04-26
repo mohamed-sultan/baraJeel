@@ -5,7 +5,7 @@ import storage from "redux-persist/es/storage";
 const config = {
   key: "root",
   storage,
-  blacklist: ["netInfo", "nav", "route"]
+  blacklist: ["netInfo", "nav", "route", "toast"]
 };
 
 import ToastReducer from "./toast";
@@ -14,6 +14,7 @@ import CurrentRoute from "./currentRoute";
 import netInfoReducers from "./netinfo";
 import RtlReducer from "./rtl";
 import LogOutReaucer from "./logOut";
+import departmentsReducer from "./department";
 
 export default persistCombineReducers(config, {
   nav: NavigationReducer,
@@ -21,5 +22,6 @@ export default persistCombineReducers(config, {
   toast: ToastReducer,
   route: CurrentRoute,
   rtl: RtlReducer,
-  logout: LogOutReaucer
+  logout: LogOutReaucer,
+  departments: departmentsReducer
 });

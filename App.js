@@ -18,6 +18,8 @@ import ToastContainer from "./src/app/components/ToastContainer";
 import store from "./src/app/store";
 import { Colors } from "./src/app/styles";
 
+export const DoToast = ms => store.dispatch({ type: "dotoast", ms });
+
 class Main extends Component {
   constructor(props) {
     super(props);
@@ -26,6 +28,9 @@ class Main extends Component {
     };
   }
   componentWillMount() {
+    console.log("================state redux====================");
+    console.log(store.getState());
+    console.log("====================================");
     this.handle_localization();
   }
   handle_localization = () => {
@@ -41,6 +46,7 @@ class Main extends Component {
         <StatusBar backgroundColor={Colors.mainDark} barStyle="light-content" />
         <RootNavigator />
         <NetInfo />
+        <ToastContainer />
       </React.Fragment>
     );
   }

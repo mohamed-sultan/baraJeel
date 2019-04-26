@@ -11,10 +11,7 @@ export default (state = initialState, { type, payload }) => {
         logout: true
       };
     case "rtl":
-      console.log("===============rtl reducer=====================");
-      console.log(payload);
-      console.log("===================rtl reducer======================");
-      return { ...state, rtl: payload };
+      return { ...initialState, rtl: payload };
 
     default:
       return state;

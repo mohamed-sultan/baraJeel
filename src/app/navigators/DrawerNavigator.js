@@ -20,6 +20,8 @@ import HomeStack from "./HomeStack";
 import { Colors } from "../styles";
 import { connect } from "react-redux";
 
+import { LogOutAction } from "../actions";
+
 class Root extends React.Component {
   constructor(props) {
     super(props);
@@ -107,19 +109,25 @@ class Root extends React.Component {
       )
     };
   }
+  // componentDidMount() {
+  //   this.props.LogOutAction(false);
+  // }
 
   componentWillReceiveProps(nxt) {
+    console.log("================props from navigation====================");
+    console.log(this.props);
+    console.log("====================================");
     // if (this.props.logout) {
     //   this.props.navigtion.navigate("AuthNav");
     //   return;
     // }
-    console.log("====================================");
-    console.log(this.props);
-    console.log("====================================");
-    if (this.props.logout) {
-      this.props.navigation.navigate("AuthNav");
-      return;
-    }
+    // console.log("====================================");
+    // console.log(this.props);
+    // console.log("====================================");
+    // if (this.props.logout === true) {
+    //   this.props.navigation.navigate("AuthNav");
+    //   return;
+    // }
     //  this.props.navigation.navigate("AuthNav");
     this.setState({
       DRAWER: createBottomTabNavigator(
@@ -213,7 +221,10 @@ const mapState = state => {
     ...state.rtl
   };
 };
-export default connect(mapState)(Root);
+export default connect(
+  mapState,
+  { LogOutAction }
+)(Root);
 
 const styles = StyleSheet.create({
   parentIcon: {

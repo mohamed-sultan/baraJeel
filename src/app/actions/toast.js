@@ -1,10 +1,8 @@
 import { DoToast } from "./types";
 
-export const Toast = (ms, color, duration) => {
-  return {
+export const Toast = (ms, dispatch) => {
+  dispatch({
     type: DoToast,
-    ms,
-    color,
-    duration
-  };
+    ms
+  });
 };

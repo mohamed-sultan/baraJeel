@@ -38,9 +38,10 @@
     "react-native-walkthrough-tooltip": "^0.5.3",
     "react-navigation": "^2.14.2",
     "react-navigation-redux-helpers": "^2.0.6",
-    "react-redux": "^5.0.7",
+    "react-redux": "^5.1.1",
     "redux": "^4.0.0",
-    "redux-persist": "^5.10.0",
+    "redux-logger": "^3.0.6",
+    "redux-persist": "^5.9.1",
     "redux-thunk": "^2.3.0",
     "tcomb-form-native": "^0.6.20",
     "yup": "^0.27.0"

@@ -36,7 +36,7 @@ class componentName extends Component {
     // await this.props.navigation.navigate("Home");
     // this.props.navigation.navigate("AuthNav");
 
-    this.props.LogOutNow(this.props.navigation);
+    this.props.LogOutAction(true);
   };
 
   render() {
@@ -149,5 +149,5 @@ const mapDispatch = dispatch => {
 
 export default connect(
   mapState,
-  mapDispatch
+  { LogOutAction }
 )(componentName);

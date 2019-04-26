@@ -34,9 +34,7 @@ class TOComponent extends Component {
           borderRadius: 14
         }}
         position="bottom"
-        fadeInDuration={750}
-        fadeOutDuration={1000}
-        opacity={0.8}
+        opacity={0.9}
         textStyle={{ color: "white" }}
       />
     );
@@ -45,8 +43,7 @@ class TOComponent extends Component {
 
 const mapState = state => {
   return {
-    ...state.toast,
-    total: state
+    ...state.toast
   };
 };
 

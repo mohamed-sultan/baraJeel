@@ -30,10 +30,6 @@ class componentName extends Component {
     // props.navigation.navigate("AuthNav");
   }
 
-  componentWillMount() {
-    //  STORE.dispatch({ type: "dotoast", ms: "ddddddddddddddddd" });
-    DoToast("tmmmmmmmmmmmmmmmam");
-  }
   componentDidMount() {
     this.props.doToast("sssssssuu uu");
   }
@@ -55,6 +51,7 @@ class componentName extends Component {
     return (
       <View style={styles.container}>
         <Header name={localization.home} />
+        <Button title="toast me" onPress={() => DoToast(String(Date.now()))} />
         <FlatList
           style={{ height: height / 1.5, width: "95%", alignSelf: "center" }}
           data={this.props.departments}

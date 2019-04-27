@@ -28,6 +28,7 @@ class Root extends React.Component {
 
     this.state = {
       visible: true,
+      rtl: props.rtl,
       DRAWER: createBottomTabNavigator(
         {
           Home: {
@@ -114,9 +115,6 @@ class Root extends React.Component {
   // }
 
   componentWillReceiveProps(nxt) {
-    console.log("================props from navigation====================");
-    console.log(this.props);
-    console.log("====================================");
     // if (this.props.logout) {
     //   this.props.navigtion.navigate("AuthNav");
     //   return;

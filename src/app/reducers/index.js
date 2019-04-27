@@ -15,6 +15,8 @@ import netInfoReducers from "./netinfo";
 import RtlReducer from "./rtl";
 import LogOutReaucer from "./logOut";
 import departmentsReducer from "./department";
+import AuthReducer from "./auth";
+import OrdersReducer from "./orders";
 
 export default persistCombineReducers(config, {
   nav: NavigationReducer,
@@ -23,5 +25,7 @@ export default persistCombineReducers(config, {
   route: CurrentRoute,
   rtl: RtlReducer,
   logout: LogOutReaucer,
-  departments: departmentsReducer
+  departments: departmentsReducer,
+  auth: AuthReducer,
+  orders: OrdersReducer
 });

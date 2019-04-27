@@ -7,7 +7,8 @@ import {
   ScrollView,
   ImageBackground,
   StyleSheet,
-  TouchableOpacity
+  TouchableOpacity,
+  ActivityIndicator
 } from "react-native";
 import {
   widthPercentageToDP as wp,
@@ -25,7 +26,9 @@ import * as Yup from "yup";
 import { ChangeRtl } from "../actions/Rtl";
 import MyCheckbox from "../components/checkbox";
 import { Colors } from "../styles";
-import { colors } from "react-native-elements";
+
+import { Login } from "../actions";
+
 class SignIn extends Component {
   constructor(props) {
     super(props);
@@ -54,13 +57,23 @@ class SignIn extends Component {
             />
           </View>
           <Formik
-            initialValues={{ email: null, password: null }}
-            onSubmit={() => this.props.navigation.navigate("HomeNav")}
+            initialValues={{
+              email: null,
+              password: null
+            }}
+            onSubmit={values => {
+              this.props.loginNow(
+                values.email,
+                values.password,
+                this.props.navigation
+              );
+            }}
             validationSchema={Yup.object().shape({
               email: Yup.string()
                 .email()
                 .required(localization.emailError),
               password: Yup.string()
+
                 .min(6)
                 .required(localization.passwordError)
             })}
@@ -108,6 +121,8 @@ class SignIn extends Component {
                       returnKeyType="next"
                       onChangeText={val => setFieldValue("email", val)}
                       onSubmitEditing={() => this._password.focus()}
+                      autoCapitalize="none"
+                      autoCorrect={false}
                     />
                   </View>
                   {touched.email && errors.email && (
@@ -148,6 +163,8 @@ class SignIn extends Component {
                       secureTextEntry={true}
                       ref={ref => (this._password = ref)}
                       onChangeText={val => setFieldValue("password", val)}
+                      autoCapitalize="none"
+                      autoCorrect={false}
                     />
                   </View>
                   {touched.password && errors.password && (
@@ -204,9 +221,13 @@ class SignIn extends Component {
                     onPress={handleSubmit}
                     activeOpacity={0.5}
                   >
-                    <Text style={[styles.Text, { color: Colors.white }]}>
-                      {localization.login}
-                    </Text>
+                    {this.props.loadingLogin ? (
+                      <ActivityIndicator size="large" color="white" />
+                    ) : (
+                      <Text style={[styles.Text, { color: Colors.white }]}>
+                        {localization.login}
+                      </Text>
+                    )}
                   </TouchableOpacity>
                 </View>
               </View>
@@ -246,12 +267,15 @@ class SignIn extends Component {
 }
 const mapStateToProps = state => {
   return {
-    ...state.rtl
+    ...state.rtl,
+    ...state.auth
   };
 };
 const DispatshToProps = dispatch => {
   return {
-    RTL: trueOrFalse => dispatch(ChangeRtl(trueOrFalse))
+    RTL: trueOrFalse => dispatch(ChangeRtl(trueOrFalse)),
+    loginNow: (email, password, navigation) =>
+      Login(email, password, navigation, dispatch)
   };
 };
 export default connect(

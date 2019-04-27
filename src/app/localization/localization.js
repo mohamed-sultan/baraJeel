@@ -54,7 +54,13 @@ export default (localization = new LocalizedStrings({
     orderNumber: "order number",
     orderDate: "order date",
     orderSpeed: "order speed",
-    order: "oreder"
+    order: "oreder",
+    thereIsSomeTHingWron: "there is some thing wrong",
+    welcome: "welcome",
+    loginFail: "invalid email or password",
+    determineYourLocation: "determine your location",
+    please: "please",
+    yourOrderDoneSuccessfully: "your order done successfully"
   },
   ar: {
     home: "الرئسيه",
@@ -110,6 +116,12 @@ export default (localization = new LocalizedStrings({
     orderNumber: "رقم الطلب",
     orderDate: "تاريخ الطلب",
     orderSpeed: "سرعه الطلب",
-    order: "طلب"
+    order: "طلب",
+    thereIsSomeTHingWron: "هناك خطا ما",
+    welcome: "مرحبا",
+    loginFail: "اداوات المرور غير صحيحه",
+    determineYourLocation: "حدد موقعك",
+    please: "من فضلك",
+    yourOrderDoneSuccessfully: "تم انشاء الطلب بنجاح"
   }
 }));

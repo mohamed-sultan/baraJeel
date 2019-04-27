@@ -11,14 +11,13 @@ class AuthLoadingScreen extends React.Component {
   }
 
   _bootstrapAsync = async () => {
-    // const userToken =
-    //   this.props.user !== null &&
-    //   this.props.user.userToken &&
-    //   this.props.user.userToken.length > 5;
-
-    // this.props.navigation.navigate(userToken ? "HomeNav" : "AuthNav");
     Localization.setLanguage(this.props.rtl ? "ar" : "en");
-    this.props.navigation.navigate("AuthNav");
+    const user = this.props.user !== null;
+    console.log("====================================");
+    console.log("from switch navigatior", user);
+    console.log("====================================");
+
+    this.props.navigation.navigate(user ? "HomeNav" : "AuthNav");
   };
 
   render() {

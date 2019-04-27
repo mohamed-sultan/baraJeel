@@ -4,19 +4,27 @@ import Toast, { DURATION } from "react-native-easy-toast";
 import { connect } from "react-redux";
 
 import { Colors } from "../styles";
+import { DoToast } from "../../../App";
 
 class TOComponent extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      ms: ""
+    };
   }
-  componentWillReceiveProps(NP) {
-    console.log("==============prop==from toast====================");
-    console.log("prop from tost", this.props);
-    console.log("============prop========================");
-    if (this.props.ms.length > 1) {
-      this.refs.toast.show(this.props.ms, 1000);
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    return { ms: String(Date.now) };
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.ms.length >> 1) {
+      this.refs.toast.show(this.props.ms, 1000, () => DoToast(""));
     }
+  }
+  shouldComponentUpdate() {
+    return true;
   }
 
   render() {
@@ -24,13 +32,13 @@ class TOComponent extends Component {
       <Toast
         ref="toast"
         style={{
-          backgroundColor: Colors.mainDark,
+          backgroundColor: "black",
           width: "80%",
           alignSelf: "center",
           justifyContent: "center",
           alignItems: "center",
           position: "absolute",
-          bottom: 0,
+          bottom: -80,
           borderRadius: 14
         }}
         position="bottom"
@@ -43,7 +51,8 @@ class TOComponent extends Component {
 
 const mapState = state => {
   return {
-    ...state.toast
+    ...state.toast,
+    total: state
   };
 };
 

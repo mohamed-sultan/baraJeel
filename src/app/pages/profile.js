@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { connect } from "react-redux";
-import { NavigationActions } from "react-navigation";
+import { NavigationActions, StackActions } from "react-navigation";
 import { LogOutAction } from "../actions";
 
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
@@ -34,9 +34,23 @@ class componentName extends Component {
     //   NavigationActions.navigate({ routeName: "SignIn" })
     // );
     // await this.props.navigation.navigate("Home");
-    // this.props.navigation.navigate("AuthNav");
+    this.props.navigation.navigate("CheckAuth");
+    this.props.navigation.reset();
+    console.log("====================================");
+    console.log(this.props.navigation.reset());
+    console.log("====================================");
 
-    this.props.LogOutAction(true);
+    // this.props.LogOutAction(true);
+    // const resetAction = StackActions.reset({
+    //   index: 0,
+    //   key: null,
+    //   actions: [NavigationActions.navigate({ routeName: "AuthNav" })]
+    // });
+    // const goToTransaction = NavigationActions.navigate({
+    //   routeName: "AuthNav"
+    // });
+    // this.props.navigation.dispatch(resetAction);
+    // this.props.navigation.dispatch(goToTransaction);
   };
 
   render() {

@@ -8,7 +8,8 @@ import {
   ImageBackground,
   StyleSheet,
   TouchableOpacity,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
+  ActivityIndicator
 } from "react-native";
 import {
   widthPercentageToDP as wp,
@@ -27,7 +28,10 @@ import { ChangeRtl } from "../actions/Rtl";
 import MyCheckbox from "../components/checkbox";
 import { Colors } from "../styles";
 import { colors } from "react-native-elements";
-class Register extends Component {
+
+import { Register } from "../actions";
+
+class RegisterClass extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -62,7 +66,15 @@ class Register extends Component {
                 email: null,
                 password: null
               }}
-              onSubmit={() => this.props.navigate.navigate("HomeNav")}
+              onSubmit={values =>
+                this.props.registerNow(
+                  values.userName,
+                  values.email,
+                  values.phone,
+                  values.password,
+                  this.props.navigation
+                )
+              }
               validationSchema={Yup.object().shape({
                 userName: Yup.string().required(localization.userNameError),
                 email: Yup.string()
@@ -72,8 +84,9 @@ class Register extends Component {
                   .min(6)
                   .required(localization.passwordError),
                 phone: Yup.string()
-                  .matches(/^(968|\+968)(9)[0-9](([0-9]){6}|([0-9]){5})$/)
+                  //    .matches(/^(968|\+968)(9)[0-9](([0-9]){6}|([0-9]){5})$/)
                   .required(localization.passwordError)
+                  .min(11, localization.passwordError)
                 //https://ipfs.io/ipfs/QmXoypizjW3WknFiJnKLwHCnL72vedxjQkDDP1mXWo6uco/wiki/Telephone_numbers_in_Oman.html
               })}
               render={({
@@ -122,6 +135,8 @@ class Register extends Component {
                         returnKeyType="next"
                         onSubmitEditing={() => this._email.focus()}
                         onChangeText={val => setFieldValue("userName", val)}
+                        autoCapitalize="none"
+                        autoCorrect={false}
                       />
                     </View>
                     {touched.userName && errors.userName && (
@@ -165,6 +180,8 @@ class Register extends Component {
                         placeholder={localization.email}
                         returnKeyType="next"
                         onChangeText={val => setFieldValue("email", val)}
+                        autoCapitalize="none"
+                        autoCorrect={false}
                       />
                     </View>
                     {touched.email && errors.email && (
@@ -208,6 +225,8 @@ class Register extends Component {
                         placeholder={localization.phoneNumber}
                         returnKeyType="next"
                         onChangeText={val => setFieldValue("phone", val)}
+                        autoCapitalize="none"
+                        autoCorrect={false}
                       />
                     </View>
                     {touched.phone && errors.phone && (
@@ -249,6 +268,8 @@ class Register extends Component {
                         returnKeyType="done"
                         secureTextEntry={true}
                         onChangeText={val => setFieldValue("password", val)}
+                        autoCapitalize="none"
+                        autoCorrect={false}
                       />
                     </View>
                     {touched.password && errors.password && (
@@ -277,9 +298,13 @@ class Register extends Component {
                       onPress={handleSubmit}
                       activeOpacity={0.5}
                     >
-                      <Text style={[styles.Text, { color: Colors.white }]}>
-                        {localization.register}
-                      </Text>
+                      {this.props.loadingRegister ? (
+                        <ActivityIndicator color="white" size="large" />
+                      ) : (
+                        <Text style={[styles.Text, { color: Colors.white }]}>
+                          {localization.register}
+                        </Text>
+                      )}
                     </TouchableOpacity>
                   </View>
                 </View>
@@ -320,18 +345,21 @@ class Register extends Component {
 }
 const mapStateToProps = state => {
   return {
-    ...state.rtl
+    ...state.rtl,
+    ...state.auth
   };
 };
 const DispatshToProps = dispatch => {
   return {
-    RTL: trueOrFalse => dispatch(ChangeRtl(trueOrFalse))
+    RTL: trueOrFalse => dispatch(ChangeRtl(trueOrFalse)),
+    registerNow: (name, email, mobile, password, navigation) =>
+      Register(name, email, mobile, password, navigation, dispatch)
   };
 };
 export default connect(
   mapStateToProps,
   DispatshToProps
-)(Register);
+)(RegisterClass);
 const styles = StyleSheet.create({
   container: {
     flex: 1,

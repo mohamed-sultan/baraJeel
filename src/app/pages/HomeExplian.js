@@ -8,7 +8,8 @@ import {
   ScrollView,
   TouchableOpacity,
   Dimensions,
-  Image
+  Image,
+  ActivityIndicator
 } from "react-native";
 import { connect } from "react-redux";
 import ImagePicker from "react-native-image-crop-picker";
@@ -22,21 +23,44 @@ import FontAwesome from "react-native-vector-icons/FontAwesome";
 
 import CalenderImage from "../../img/calenderImage.png";
 
+import { DoToast } from "../../../App";
+
+import { CreateNewOrder } from "../actions";
 const { width, height } = Dimensions.get("window");
 
 class HomeOrder extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      val: ""
+      val: "",
+      image: ""
     };
   }
 
   _handlePress = () => {
+    if (this.state.image === "") {
+      DoToast(`${Localization.please} ${Localization.attacImage}`);
+      return;
+    }
+    if (this.state.val === "") {
+      DoToast(`${Localization.please} ${Localization.writeNotes}`);
+      return;
+    }
     console.log("====================================");
-    console.log(this.props.navigation);
+    console.log(this.props.navigation.state.params);
     console.log("====================================");
-    this.props.navigation.popToTop();
+    //this.props.navigation.popToTop();
+    let d = this.props.navigation.state.params;
+    delete d.name;
+    this.props.createNewOrderNow(
+      this.props.token,
+      {
+        ...d,
+        image: this.state.image,
+        note: this.state.val
+      },
+      this.props.navigation
+    );
   };
 
   render() {
@@ -185,21 +209,27 @@ class HomeOrder extends Component {
                   ImagePicker.openPicker({
                     width: 300,
                     height: 400,
-                    cropping: true
+                    cropping: true,
+                    includeBase64: true
                   })
                     .then(image => {
                       console.log(
-                        "=================success==================="
+                        "=================success==image pick================="
                       );
-                      console.log(image);
+                      console.log(image.data);
                       console.log(
-                        "=================success==================="
+                        "=================success=image pic=================="
                       );
+                      this.setState({ image: image.data });
                     })
                     .catch(e => {
-                      console.log("=================error===================");
+                      console.log(
+                        "=================error==image pic================="
+                      );
                       console.log(e);
-                      console.log("=================error===================");
+                      console.log(
+                        "=================error==image pic================="
+                      );
                     })
                 }
                 style={styles.rowExplainTouchable}
@@ -221,7 +251,11 @@ class HomeOrder extends Component {
             placeholderTextColor="#70284b"
           />
           <TouchableOpacity style={styles.next} onPress={this._handlePress}>
-            <Text style={styles.textNext}>{Localization.next}</Text>
+            {this.props.createOrderLoading ? (
+              <ActivityIndicator size="large" color="white" />
+            ) : (
+              <Text style={styles.textNext}>{Localization.next}</Text>
+            )}
           </TouchableOpacity>
         </KeyboardAvoidingView>
       </ScrollView>
@@ -231,8 +265,20 @@ class HomeOrder extends Component {
 
 const mapState = state => {
   return {
-    ...state.rtl
+    ...state.rtl,
+    ...state.orders,
+    ...state.auth
   };
 };
 
-export default connect(mapState)(HomeOrder);
+const mapDispatch = dispatch => {
+  return {
+    createNewOrderNow: (token, data, navigation) =>
+      CreateNewOrder(token, data, navigation, dispatch)
+  };
+};
+
+export default connect(
+  mapState,
+  mapDispatch
+)(HomeOrder);

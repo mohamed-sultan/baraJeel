@@ -18,6 +18,8 @@ import Header from "../components/AppHeader";
 import { Colors } from "../styles";
 import LocationIcon from "../../img/loc.png";
 
+import { DoToast } from "../../../App";
+
 const { width, height } = Dimensions.get("window");
 
 class HomeOrder extends Component {
@@ -48,8 +50,16 @@ class HomeOrder extends Component {
     this.setState({ region });
   }
   _handlePress = () => {
+    if (this.state.val === "") {
+      DoToast(`${Localization.please} ${Localization.determineYourLocation}`);
+      return;
+    }
     this.props.navigation.navigate("HomeOrderNextScreen", {
-      name: this.props.navigation.state.params.name
+      name: this.props.navigation.state.params.name,
+      address: this.state.val,
+      lat: this.state.region.latitude,
+      long: this.state.region.longitude,
+      department_id: this.props.navigation.state.params.id
     });
   };
   render() {
@@ -121,7 +131,7 @@ class HomeOrder extends Component {
             <Text style={styles.yourLocation}>{Localization.yourLocation}</Text>
             <View style={styles.mapBox}>
               <MapView
-                style={{ flex: 1 }}
+                style={{ flex: 1, margin: 5, borderRadius: 20, borderWidth: 1 }}
                 region={this.state.region}
                 onRegionChangeComplete={r => this.onRegionChange(r)}
               >
@@ -151,6 +161,8 @@ class HomeOrder extends Component {
               value={this.state.val}
               onChangeText={val => this.setState({ val })}
               returnKeyType="next"
+              placeholderTextColor="#70284b"
+              placeholder={Localization.determineYourLocation}
             />
           </View>
           <TouchableOpacity style={styles.next} onPress={this._handlePress}>

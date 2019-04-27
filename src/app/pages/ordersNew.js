@@ -5,161 +5,29 @@ import {
   FlatList,
   StyleSheet,
   ScrollView,
-  Dimensions
+  Dimensions,
+  RefreshControl
 } from "react-native";
 
 import { connect } from "react-redux";
 import localization from "../localization/localization";
 import { Colors } from "../styles";
+import { FetchNewOrders } from "../actions";
 
 const { height } = Dimensions.get("window");
-var DATA = [
-  {
-    orderNumber: "13233",
-    service: "تنظيق",
-    orderDate: "13-5-2019 صباحا",
-    orderSpeed: "عادى",
-    address: "شارع مرتضى العاملى عمان"
-  },
-  {
-    orderNumber: "13233",
-    service: "تنظيق",
-    orderDate: "13-5-2019 صباحا",
-    orderSpeed: "عادى",
-    address: "شارع مرتضى العاملى عمان"
-  },
-  {
-    orderNumber: "13233",
-    service: "تنظيق",
-    orderDate: "13-5-2019 صباحا",
-    orderSpeed: "عادى",
-    address: "شارع مرتضى العاملى عمان"
-  },
-  {
-    orderNumber: "13233",
-    service: "تنظيق",
-    orderDate: "13-5-2019 صباحا",
-    orderSpeed: "عادى",
-    address: "شارع مرتضى العاملى عمان"
-  },
-  {
-    orderNumber: "13233",
-    service: "تنظيق",
-    orderDate: "13-5-2019 صباحا",
-    orderSpeed: "عادى",
-    address: "شارع مرتضى العاملى عمان"
-  },
-  {
-    orderNumber: "13233",
-    service: "تنظيق",
-    orderDate: "13-5-2019 صباحا",
-    orderSpeed: "عادى",
-    address: "شارع مرتضى العاملى عمان"
-  },
-  {
-    orderNumber: "13233",
-    service: "تنظيق",
-    orderDate: "13-5-2019 صباحا",
-    orderSpeed: "عادى",
-    address: "شارع مرتضى العاملى عمان"
-  },
-  {
-    orderNumber: "13233",
-    service: "تنظيق",
-    orderDate: "13-5-2019 صباحا",
-    orderSpeed: "عادى",
-    address: "شارع مرتضى العاملى عمان"
-  },
-  {
-    orderNumber: "13233",
-    service: "تنظيق",
-    orderDate: "13-5-2019 صباحا",
-    orderSpeed: "عادى",
-    address: "شارع مرتضى العاملى عمان"
-  },
-  {
-    orderNumber: "13233",
-    service: "تنظيق",
-    orderDate: "13-5-2019 صباحا",
-    orderSpeed: "عادى",
-    address: "شارع مرتضى العاملى عمان"
-  },
-  {
-    orderNumber: "13233",
-    service: "تنظيق",
-    orderDate: "13-5-2019 صباحا",
-    orderSpeed: "عادى",
-    address: "شارع مرتضى العاملى عمان"
-  },
-  {
-    orderNumber: "13233",
-    service: "تنظيق",
-    orderDate: "13-5-2019 صباحا",
-    orderSpeed: "عادى",
-    address: "شارع مرتضى العاملى عمان"
-  },
-  {
-    orderNumber: "13233",
-    service: "تنظيق",
-    orderDate: "13-5-2019 صباحا",
-    orderSpeed: "عادى",
-    address: "شارع مرتضى العاملى عمان"
-  },
-  {
-    orderNumber: "13233",
-    service: "تنظيق",
-    orderDate: "13-5-2019 صباحا",
-    orderSpeed: "عادى",
-    address: "شارع مرتضى العاملى عمان"
-  },
-  {
-    orderNumber: "13233",
-    service: "تنظيق",
-    orderDate: "13-5-2019 صباحا",
-    orderSpeed: "عادى",
-    address: "شارع مرتضى العاملى عمان"
-  },
-  {
-    orderNumber: "13233",
-    service: "تنظيق",
-    orderDate: "13-5-2019 صباحا",
-    orderSpeed: "عادى",
-    address: "شارع مرتضى العاملى عمان"
-  },
-  {
-    orderNumber: "13233",
-    service: "تنظيق",
-    orderDate: "13-5-2019 صباحا",
-    orderSpeed: "عادى",
-    address: "شارع مرتضى العاملى عمان"
-  },
-  {
-    orderNumber: "13233",
-    service: "تنظيق",
-    orderDate: "13-5-2019 صباحا",
-    orderSpeed: "عادى",
-    address: "شارع مرتضى العاملى عمان"
-  },
-  {
-    orderNumber: "13233",
-    service: "تنظيق",
-    orderDate: "13-5-2019 صباحا",
-    orderSpeed: "عادى",
-    address: "شارع مرتضى العاملى عمان"
-  },
-  {
-    orderNumber: "13233",
-    service: "تنظيق",
-    orderDate: "13-5-2019 صباحا",
-    orderSpeed: "عادى",
-    address: "شارع مرتضى العاملى عمان"
-  }
-];
 
 class New extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {};
+  }
+  componentWillMount() {
+    this.props.getMyNewOrders(this.props.token);
+  }
+  componentWillReceiveProps() {
+    console.log("========new prop============================");
+    console.log(this.props.newOrders);
+    console.log("================new prop====================");
   }
   _renderItem = ({ item, index }) => {
     return (
@@ -168,31 +36,31 @@ class New extends PureComponent {
           <Text style={this.styles.labelName}>{`${
             localization.orderNumber
           } : `}</Text>
-          <Text style={this.styles.labelValue}>{item.orderNumber}</Text>
+          <Text style={this.styles.labelValue}>{item.id}</Text>
         </View>
         <View style={this.styles.rowContainer}>
           <Text style={this.styles.labelName}>{`${
             localization.service
           } : `}</Text>
-          <Text style={this.styles.labelValue}>{item.service}</Text>
+          <Text style={this.styles.labelValue}>{item.department}</Text>
         </View>
         <View style={this.styles.rowContainer}>
           <Text style={this.styles.labelName}>{`${
             localization.orderDate
           } : `}</Text>
-          <Text style={this.styles.labelValue}>{item.orderDate}</Text>
+          <Text style={this.styles.labelValue}>{item.date}</Text>
         </View>
         <View style={this.styles.rowContainer}>
           <Text style={this.styles.labelName}>{`${
             localization.orderSpeed
           } : `}</Text>
-          <Text style={this.styles.labelValue}>{item.orderSpeed}</Text>
+          <Text style={this.styles.labelValue}>{item.type}</Text>
         </View>
         <View style={this.styles.rowContainer}>
           <Text style={this.styles.labelName}>{`${
             localization.address
           } : `}</Text>
-          <Text style={this.styles.labelValue}>{item.address}</Text>
+          <Text style={this.styles.labelValue}>{item.type}</Text>
         </View>
       </View>
     );
@@ -238,15 +106,23 @@ class New extends PureComponent {
   render() {
     return (
       <View style={this.styles.container}>
-        <FlatList
-          style={{ height: height / 1.5, backgroundColor: "#f1f1f1" }}
-          data={DATA}
-          keyExtractor={(item, key) => key}
-          renderItem={this._renderItem}
-          ListFooterComponent={() => (
-            <View style={{ height: 30, alignSelf: "stretch" }} />
-          )}
-        />
+        <View style={{ height: height / 1.5, backgroundColor: "#f1f1f1" }}>
+          <FlatList
+            data={this.props.newOrders}
+            keyExtractor={(item, key) => key}
+            renderItem={this._renderItem}
+            extraData={this.props.newOrders}
+            ListFooterComponent={() => (
+              <View style={{ height: 30, alignSelf: "stretch" }} />
+            )}
+            refreshControl={
+              <RefreshControl
+                refreshing={this.props.newOrdersLoading}
+                onRefresh={() => this.props.getMyNewOrders(this.props.token)}
+              />
+            }
+          />
+        </View>
       </View>
     );
   }
@@ -254,8 +130,18 @@ class New extends PureComponent {
 
 const mapState = state => {
   return {
-    ...state.rtl
+    ...state.rtl,
+    ...state.auth,
+    ...state.orders
+  };
+};
+const mapDispatch = dispatch => {
+  return {
+    getMyNewOrders: token => FetchNewOrders(token, dispatch)
   };
 };
 
-export default connect(mapState)(New);
+export default connect(
+  mapState,
+  mapDispatch
+)(New);

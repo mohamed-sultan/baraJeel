@@ -20,6 +20,9 @@ import DateTimePicker from "react-native-modal-datetime-picker";
 
 import CalenderImage from "../../img/calenderImage.png";
 
+import { DoToast } from "../../../App";
+import moment from "moment";
+
 const { width, height } = Dimensions.get("window");
 
 class HomeOrder extends Component {
@@ -37,18 +40,46 @@ class HomeOrder extends Component {
   }
 
   _handlePress = () => {
+    const {
+      val,
+      sppedChecked,
+      ordinaryCheck,
+      eveningChecked,
+      morningCheckde,
+      isDateTimePickerVisible,
+      Date
+    } = this.state;
+
+    if (!sppedChecked && !ordinaryCheck) {
+      DoToast(`${Localization.please} ${Localization.selectYourRequestSpeed}`);
+      return;
+    }
+    if (Date === Localization.chooseYourAppoinment) {
+      DoToast(`${Localization.please} ${Localization.chooseYourAppoinment}`);
+      return;
+    }
+    if (!eveningChecked && !morningCheckde) {
+      DoToast(`${Localization.please} ${Localization.chooseYourAppoinment}`);
+      return;
+    }
     this.props.navigation.navigate("HomeExplainScreen", {
-      name: this.props.navigation.state.params.name
+      name: this.props.navigation.state.params.name,
+      address: this.props.navigation.state.params.address,
+      lat: this.props.navigation.state.params.lat,
+      lng: this.props.navigation.state.params.long,
+      type: sppedChecked ? "quick" : "ss",
+      time: morningCheckde ? "morining" : "evening",
+      date: Date,
+      department_id: this.props.navigation.state.params.department_id
     });
   };
   handleDatePicked = date => {
-    let Date = String(date)
-      .split(" ")
-      .filter((t, i) => i !== 0 && i < 3)
-      .join(" ");
-    console.log("A Date has been picked: ", Date);
+    console.log("====================================");
+    console.log("moment", moment(date).format("YYYY/MM/DD"));
+    console.log("====================================");
+    this.setState({ Date: moment(date).format("YYYY/MM/DD") });
 
-    this.setState({ isDateTimePickerVisible: false, Date });
+    this.setState({ isDateTimePickerVisible: false });
   };
   render() {
     const { rtl } = this.props;

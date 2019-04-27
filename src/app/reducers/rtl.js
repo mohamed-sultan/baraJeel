@@ -1,15 +1,9 @@
 const initialState = {
-  rtl: true,
-  logout: false
+  rtl: true
 };
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
-    case "logout":
-      return {
-        ...state,
-        logout: true
-      };
     case "rtl":
       return { ...initialState, rtl: payload };
 

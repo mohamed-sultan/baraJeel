@@ -20,37 +20,7 @@ import { Colors } from "./src/app/styles";
 
 export const DoToast = ms => store.dispatch({ type: "dotoast", ms });
 
-class Main extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      ready: false
-    };
-  }
-  componentWillMount() {
-    console.log("================state redux====================");
-    console.log(store.getState());
-    console.log("====================================");
-    this.handle_localization();
-  }
-  handle_localization = () => {
-    let lan = store.getState().rtl.rtl;
-    lan ? localization.setLanguage("ar") : localization.setLanguage("en");
-
-    this.setState({ ready: true });
-  };
-  render() {
-    if (!this.state.ready) return null;
-    return (
-      <React.Fragment>
-        <StatusBar backgroundColor={Colors.mainDark} barStyle="light-content" />
-        <RootNavigator />
-        <NetInfo />
-        <ToastContainer />
-      </React.Fragment>
-    );
-  }
-}
+import Main from "./src";
 export default class App extends Component {
   constructor(props) {
     super(props);

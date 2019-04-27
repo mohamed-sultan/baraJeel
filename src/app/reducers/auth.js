@@ -43,7 +43,8 @@ export default (state = initialState, action) => {
       };
     case RegisterFail:
       return { ...state, loadingLogin: false, loadingRegister: false };
-
+    case "logout":
+      return { ...initialState };
     default:
       return state;
   }

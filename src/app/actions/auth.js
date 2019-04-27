@@ -39,14 +39,24 @@ export const Register = (
   navigation,
   dispatch
 ) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded"
+    }
+  };
+
   dispatch({ type: RegisterAttemp });
   axios
-    .post("http://trust.shobeek-lobeek.com/api/auth/register", {
-      name,
-      email,
-      mobile,
-      password
-    })
+    .post(
+      "http://trust.shobeek-lobeek.com/api/auth/register",
+      {
+        name,
+        email,
+        mobile,
+        password
+      },
+      config
+    )
     .then(r => {
       dispatch({
         type: RegisterSuccess,
@@ -59,7 +69,7 @@ export const Register = (
     })
     .catch(e => {
       console.log("============error register========================");
-      console.log(e);
+      console.log(e.response);
       console.log("==============error register======================");
       dispatch({ type: RegisterFail });
       DoToast(Localization.thereIsSomeTHingWron);

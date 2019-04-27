@@ -11,7 +11,6 @@ class AuthLoadingScreen extends React.Component {
   }
 
   _bootstrapAsync = async () => {
-    Localization.setLanguage(this.props.rtl ? "ar" : "en");
     const user = this.props.user !== null;
     console.log("====================================");
     console.log("from switch navigatior", user);

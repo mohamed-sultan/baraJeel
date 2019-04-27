@@ -39,7 +39,7 @@ class SignIn extends Component {
 
   render() {
     let rtl = this.props.rtl;
-    localization.setLanguage("ar");
+
     return (
       <View style={styles.container}>
         <ScrollView style={styles.container}>
@@ -58,13 +58,15 @@ class SignIn extends Component {
           </View>
           <Formik
             initialValues={{
-              email: null,
-              password: null
+              email: '"mohamed.monem2078@gmail.com"',
+              password: "123456"
             }}
             onSubmit={values => {
               this.props.loginNow(
-                values.email,
-                values.password,
+                // values.email,
+                // values.password,
+                "mohamed.monem2078@gmail.com",
+                "123456",
                 this.props.navigation
               );
             }}

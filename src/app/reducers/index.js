@@ -5,7 +5,7 @@ import storage from "redux-persist/es/storage";
 const config = {
   key: "root",
   storage,
-  blacklist: ["netInfo", "nav", "route", "toast"]
+  blacklist: ["netInfo", "nav", "route", "toast", "logout"]
 };
 
 import ToastReducer from "./toast";

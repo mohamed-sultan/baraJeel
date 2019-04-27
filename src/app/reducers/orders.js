@@ -131,6 +131,8 @@ export default (state = initialState, action) => {
         createOrderLoading: false,
         inProgressOrderLoading: false
       };
+    case "logout":
+      return { ...initialState };
 
     default:
       return state;

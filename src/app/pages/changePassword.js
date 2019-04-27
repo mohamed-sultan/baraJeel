@@ -41,7 +41,7 @@ class SignIn extends Component {
 
   render() {
     let rtl = this.props.rtl;
-    localization.setLanguage("ar");
+
     return (
       <View style={styles.container}>
         <Header

@@ -81,7 +81,7 @@ class AboutUsScreen extends PureComponent {
       },
       boxWrapper2: {
         backgroundColor: "#ffffff",
-        paddingVertical: 50,
+        paddingVertical: 30,
         paddingHorizontal: 20,
         marginVertical: "5%",
         width: "90%",
@@ -150,7 +150,7 @@ class AboutUsScreen extends PureComponent {
               textAlign: "center",
               color: Colors.yellow,
               fontWeight: "800",
-              fontSize: 30,
+              fontSize: 25,
               borderBottomWidth: 3,
               marginBottom: 10,
               borderColor: Colors.yellow
@@ -163,7 +163,7 @@ class AboutUsScreen extends PureComponent {
           <View style={this.styles.rowContainer}>
             <Text style={this.styles.labelName}>{`${
               localization.RequestDone
-            } : `}</Text>
+            }: `}</Text>
             <Text style={this.styles.labelValue}>
               {this.props.doneOrders.length}
             </Text>
@@ -171,7 +171,7 @@ class AboutUsScreen extends PureComponent {
           <View style={this.styles.rowContainer}>
             <Text style={this.styles.labelName}>{`${
               localization.RequestPending
-            } : `}</Text>
+            }: `}</Text>
             <Text style={this.styles.labelValue}>
               {this.props.inProgressOrders.length}
             </Text>
@@ -179,7 +179,7 @@ class AboutUsScreen extends PureComponent {
           <View style={this.styles.rowContainer}>
             <Text style={this.styles.labelName}>{`${
               localization.newRequest
-            } : `}</Text>
+            }: `}</Text>
             <Text style={this.styles.labelValue}>
               {this.props.newOrders.length}
             </Text>

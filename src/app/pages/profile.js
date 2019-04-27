@@ -34,11 +34,6 @@ class componentName extends Component {
     //   NavigationActions.navigate({ routeName: "SignIn" })
     // );
     // await this.props.navigation.navigate("Home");
-    this.props.navigation.navigate("CheckAuth");
-    this.props.navigation.reset();
-    console.log("====================================");
-    console.log(this.props.navigation.reset());
-    console.log("====================================");
 
     // this.props.LogOutAction(true);
     // const resetAction = StackActions.reset({
@@ -51,6 +46,7 @@ class componentName extends Component {
     // });
     // this.props.navigation.dispatch(resetAction);
     // this.props.navigation.dispatch(goToTransaction);
+    this.props.LogOutAction(true);
   };
 
   render() {

@@ -114,19 +114,12 @@ class Root extends React.Component {
   //   this.props.LogOutAction(false);
   // }
 
+  //this.props.navigation.navigate("AuthNav");
   componentWillReceiveProps(nxt) {
-    // if (this.props.logout) {
-    //   this.props.navigtion.navigate("AuthNav");
-    //   return;
-    // }
-    // console.log("====================================");
-    // console.log(this.props);
-    // console.log("====================================");
-    // if (this.props.logout === true) {
-    //   this.props.navigation.navigate("AuthNav");
-    //   return;
-    // }
-    //  this.props.navigation.navigate("AuthNav");
+    console.log("===============from main nav=====================");
+    console.log(this.props.logout);
+    console.log("====================================");
+
     this.setState({
       DRAWER: createBottomTabNavigator(
         {
@@ -216,7 +209,8 @@ class Root extends React.Component {
 
 const mapState = state => {
   return {
-    ...state.rtl
+    ...state.rtl,
+    ...state.logout
   };
 };
 export default connect(

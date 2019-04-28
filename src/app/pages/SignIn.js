@@ -58,15 +58,13 @@ class SignIn extends Component {
           </View>
           <Formik
             initialValues={{
-              email: '"mohamed.monem2078@gmail.com"',
-              password: "123456"
+              email: null,
+              password: null
             }}
             onSubmit={values => {
               this.props.loginNow(
-                // values.email,
-                // values.password,
-                "mohamed.monem2078@gmail.com",
-                "123456",
+                values.email,
+                values.password,
                 this.props.navigation
               );
             }}

@@ -26,6 +26,9 @@ export const Login = (email, password, navigation, dispatch) => {
       DoToast(`${Localization.welcome} ${r.data.data.name}`);
     })
     .catch(e => {
+      console.log("==========error login==========================");
+      console.log(e.response);
+      console.log("===========error login=========================");
       dispatch({ type: LOGIN_FAILED });
       DoToast(Localization.loginFail);
     });
@@ -54,8 +57,8 @@ export const Register = (
         email,
         mobile,
         password
-      },
-      config
+      }
+      // config
     )
     .then(r => {
       dispatch({
@@ -69,8 +72,9 @@ export const Register = (
     })
     .catch(e => {
       console.log("============error register========================");
-      console.log(e.response);
+      console.log(e.response, e.message);
       console.log("==============error register======================");
+
       dispatch({ type: RegisterFail });
       DoToast(Localization.thereIsSomeTHingWron);
     });

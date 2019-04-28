@@ -27,11 +27,7 @@ class New extends PureComponent {
   componentWillMount() {
     this.props.getMyNewOrders(this.props.isConnected, this.props.token);
   }
-  componentWillReceiveProps() {
-    console.log("========new prop============================");
-    console.log(this.props.newOrders);
-    console.log("================new prop====================");
-  }
+
   _renderItem = ({ item, index }) => {
     return (
       <View key={index} style={this.styles.boxWrapper2Item}>
@@ -109,38 +105,37 @@ class New extends PureComponent {
   render() {
     return (
       <View style={this.styles.container}>
-        <View style={{ height: height / 1.5, backgroundColor: "#f1f1f1" }}>
-          <FlatList
-            data={this.props.newOrders}
-            keyExtractor={(item, key) => key}
-            renderItem={this._renderItem}
-            extraData={this.props.newOrders}
-            ListFooterComponent={() => (
-              <View style={{ height: 30, alignSelf: "stretch" }} />
-            )}
-            refreshControl={
-              <RefreshControl
-                refreshing={this.props.newOrdersLoading}
-                onRefresh={() =>
-                  this.props.getMyNewOrders(
-                    this.props.isConnected,
-                    this.props.token
-                  )
-                }
-              />
-            }
-            ListEmptyComponent={() => (
-              <View
-                style={{
-                  height: height / 1.5,
-                  marginTop: "40%"
-                }}
-              >
-                <EmptyComponent />
-              </View>
-            )}
-          />
-        </View>
+        <FlatList
+          style={{ height: height / 1.5, backgroundColor: "#f1f1f1" }}
+          data={this.props.newOrders}
+          keyExtractor={(item, key) => key}
+          renderItem={this._renderItem}
+          extraData={this.props.newOrders}
+          ListFooterComponent={() => (
+            <View style={{ height: 30, alignSelf: "stretch" }} />
+          )}
+          refreshControl={
+            <RefreshControl
+              refreshing={this.props.newOrdersLoading}
+              onRefresh={() =>
+                this.props.getMyNewOrders(
+                  this.props.isConnected,
+                  this.props.token
+                )
+              }
+            />
+          }
+          ListEmptyComponent={() => (
+            <View
+              style={{
+                height: height / 1.5,
+                marginTop: "40%"
+              }}
+            >
+              <EmptyComponent />
+            </View>
+          )}
+        />
       </View>
     );
   }

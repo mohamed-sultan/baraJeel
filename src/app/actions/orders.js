@@ -32,6 +32,20 @@ export const FetchNewOrders = (token, dispatch) => {
       DoToast(Localization.thereIsSomeTHingWron);
     });
 };
+export const FetchInProgressOrders = (token, dispatch) => {
+  axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
+
+  dispatch({ type: FetchOrderInprogressAttemp });
+  axios
+    .get("http://trust.shobeek-lobeek.com/api/me/orders?status=verified")
+    .then(r => {
+      dispatch({ type: FetchOrderInprogressSuccess, payload: r.data.data });
+    })
+    .catch(e => {
+      dispatch({ type: FetchOrderInprogressFail });
+      DoToast(Localization.thereIsSomeTHingWron);
+    });
+};
 export const FetchDoneOrders = (token, dispatch) => {
   axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
 

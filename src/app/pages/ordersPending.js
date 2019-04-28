@@ -5,162 +5,26 @@ import {
   FlatList,
   StyleSheet,
   ScrollView,
-  Dimensions
+  Dimensions,
+  RefreshControl
 } from "react-native";
 
 import { connect } from "react-redux";
 import localization from "../localization/localization";
 import { Colors } from "../styles";
 import EmptyComponent from "../components/listEmptyComponent";
+import { DoToast } from "../../../App";
+import { FetchInProgressOrders } from "../actions";
 
 const { height } = Dimensions.get("window");
-var DATA = [
-  {
-    orderNumber: "13233",
-    service: "تنظيق",
-    orderDate: "13-5-2019 صباحا",
-    orderSpeed: "عادى",
-    address: "شارع مرتضى العاملى عمان"
-  },
-  {
-    orderNumber: "13233",
-    service: "تنظيق",
-    orderDate: "13-5-2019 صباحا",
-    orderSpeed: "عادى",
-    address: "شارع مرتضى العاملى عمان"
-  },
-  {
-    orderNumber: "13233",
-    service: "تنظيق",
-    orderDate: "13-5-2019 صباحا",
-    orderSpeed: "عادى",
-    address: "شارع مرتضى العاملى عمان"
-  },
-  {
-    orderNumber: "13233",
-    service: "تنظيق",
-    orderDate: "13-5-2019 صباحا",
-    orderSpeed: "عادى",
-    address: "شارع مرتضى العاملى عمان"
-  },
-  {
-    orderNumber: "13233",
-    service: "تنظيق",
-    orderDate: "13-5-2019 صباحا",
-    orderSpeed: "عادى",
-    address: "شارع مرتضى العاملى عمان"
-  },
-  {
-    orderNumber: "13233",
-    service: "تنظيق",
-    orderDate: "13-5-2019 صباحا",
-    orderSpeed: "عادى",
-    address: "شارع مرتضى العاملى عمان"
-  },
-  {
-    orderNumber: "13233",
-    service: "تنظيق",
-    orderDate: "13-5-2019 صباحا",
-    orderSpeed: "عادى",
-    address: "شارع مرتضى العاملى عمان"
-  },
-  {
-    orderNumber: "13233",
-    service: "تنظيق",
-    orderDate: "13-5-2019 صباحا",
-    orderSpeed: "عادى",
-    address: "شارع مرتضى العاملى عمان"
-  },
-  {
-    orderNumber: "13233",
-    service: "تنظيق",
-    orderDate: "13-5-2019 صباحا",
-    orderSpeed: "عادى",
-    address: "شارع مرتضى العاملى عمان"
-  },
-  {
-    orderNumber: "13233",
-    service: "تنظيق",
-    orderDate: "13-5-2019 صباحا",
-    orderSpeed: "عادى",
-    address: "شارع مرتضى العاملى عمان"
-  },
-  {
-    orderNumber: "13233",
-    service: "تنظيق",
-    orderDate: "13-5-2019 صباحا",
-    orderSpeed: "عادى",
-    address: "شارع مرتضى العاملى عمان"
-  },
-  {
-    orderNumber: "13233",
-    service: "تنظيق",
-    orderDate: "13-5-2019 صباحا",
-    orderSpeed: "عادى",
-    address: "شارع مرتضى العاملى عمان"
-  },
-  {
-    orderNumber: "13233",
-    service: "تنظيق",
-    orderDate: "13-5-2019 صباحا",
-    orderSpeed: "عادى",
-    address: "شارع مرتضى العاملى عمان"
-  },
-  {
-    orderNumber: "13233",
-    service: "تنظيق",
-    orderDate: "13-5-2019 صباحا",
-    orderSpeed: "عادى",
-    address: "شارع مرتضى العاملى عمان"
-  },
-  {
-    orderNumber: "13233",
-    service: "تنظيق",
-    orderDate: "13-5-2019 صباحا",
-    orderSpeed: "عادى",
-    address: "شارع مرتضى العاملى عمان"
-  },
-  {
-    orderNumber: "13233",
-    service: "تنظيق",
-    orderDate: "13-5-2019 صباحا",
-    orderSpeed: "عادى",
-    address: "شارع مرتضى العاملى عمان"
-  },
-  {
-    orderNumber: "13233",
-    service: "تنظيق",
-    orderDate: "13-5-2019 صباحا",
-    orderSpeed: "عادى",
-    address: "شارع مرتضى العاملى عمان"
-  },
-  {
-    orderNumber: "13233",
-    service: "تنظيق",
-    orderDate: "13-5-2019 صباحا",
-    orderSpeed: "عادى",
-    address: "شارع مرتضى العاملى عمان"
-  },
-  {
-    orderNumber: "13233",
-    service: "تنظيق",
-    orderDate: "13-5-2019 صباحا",
-    orderSpeed: "عادى",
-    address: "شارع مرتضى العاملى عمان"
-  },
-  {
-    orderNumber: "13233",
-    service: "تنظيق",
-    orderDate: "13-5-2019 صباحا",
-    orderSpeed: "عادى",
-    address: "شارع مرتضى العاملى عمان"
-  }
-];
 
 class New extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {};
+  }
+  componentWillMount() {
+    this.props.getMyPendingOrders(this.props.isConnected, this.props.token);
   }
   _renderItem = ({ item, index }) => {
     return (
@@ -241,12 +105,23 @@ class New extends PureComponent {
       <View style={this.styles.container}>
         <FlatList
           style={{ height: height / 1.5, backgroundColor: "#f1f1f1" }}
-          data={DATA}
+          data={this.props.inProgressOrders}
           keyExtractor={(item, key) => key}
           renderItem={this._renderItem}
           ListFooterComponent={() => (
             <View style={{ height: 30, alignSelf: "stretch" }} />
           )}
+          refreshControl={
+            <RefreshControl
+              refreshing={this.props.inProgressOrderLoading}
+              onRefresh={() =>
+                this.props.getMyPendingOrders(
+                  this.props.isConnected,
+                  this.props.token
+                )
+              }
+            />
+          }
           ListEmptyComponent={() => (
             <View
               style={{
@@ -266,8 +141,25 @@ class New extends PureComponent {
 const mapState = state => {
   return {
     ...state.rtl,
-    ...state.netInfo
+    ...state.netInfo,
+    ...state.auth,
+    ...state.orders
   };
 };
 
-export default connect(mapState)(New);
+const mapDispatch = dispatch => {
+  return {
+    getMyPendingOrders: (isConnected, token) => {
+      if (!isConnected) {
+        DoToast(localization.noInternetzconnection);
+        return;
+      }
+      FetchInProgressOrders(token, dispatch);
+    }
+  };
+};
+
+export default connect(
+  mapState,
+  mapDispatch
+)(New);

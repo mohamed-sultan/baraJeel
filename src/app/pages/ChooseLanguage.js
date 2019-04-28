@@ -4,8 +4,13 @@ import {
   View,
   StyleSheet,
   TouchableOpacity,
-  Dimensions
+  Dimensions,
+  Platform
 } from "react-native";
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp
+} from "react-native-responsive-screen";
 import { connect } from "react-redux";
 
 import { Colors } from "../styles";
@@ -31,8 +36,20 @@ class ChooseLanguage extends Component {
 
   render() {
     let iconStyle = this.props.rtl
-      ? { position: "absolute", top: 20, right: 20, zIndex: 100 }
-      : { position: "absolute", top: 20, left: 20, zIndex: 100 };
+      ? {
+          position: "absolute",
+          top: Platform.OS === "ios" ? hp("5%") : hp("3%"),
+          right: 20,
+          zIndex: 100
+        }
+      : {
+          position: "absolute",
+          top: Platform.OS === "ios" ? hp("5%") : hp("3%"),
+          left: 20,
+          zIndex: 100
+        };
+    //   height: Platform.OS === "ios" ? hp("12%") : hp("10%"),
+    // paddingTop: Platform.OS === "ios" ? hp("3%") : 0
     return (
       <React.Fragment>
         {this.state.hasBack && (

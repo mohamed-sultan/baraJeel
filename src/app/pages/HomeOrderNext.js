@@ -15,7 +15,7 @@ import { connect } from "react-redux";
 import Localization from "../localization/localization";
 import Header from "../components/AppHeader";
 import { Colors } from "../styles";
-import CHeckBox from "../components/checkBox";
+import CHeckBox from "../components/checkBox1";
 import DateTimePicker from "react-native-modal-datetime-picker";
 
 import CalenderImage from "../../img/calenderImage.png";

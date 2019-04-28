@@ -9,6 +9,8 @@
 
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
+#import "RNSplashScreen.h"  // here
+//#import <GoogleMaps/GoogleMaps.h>
 
 @implementation AppDelegate
 
@@ -29,6 +31,9 @@
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
+  [RNSplashScreen show];  // here
+//   [GMSServices provideAPIKey:@"AIzaSyCG_vY3gfz57kYLuUXzVqHJ8erPBRlpNfc"];
+
   return YES;
 }
 

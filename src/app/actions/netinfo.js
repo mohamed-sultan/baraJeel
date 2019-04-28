@@ -1,6 +1,6 @@
-import { UpdateConnection } from "./types";
+import { ConnectionStatus } from "./types";
 
 export const UpdateConnectionStatus = isConnected => ({
-  type: UpdateConnection,
+  type: ConnectionStatus,
   payload: isConnected
 });

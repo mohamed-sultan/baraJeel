@@ -30,6 +30,7 @@ import { Colors } from "../styles";
 import { Login } from "../actions";
 import Localization from "../localization/localization";
 import Header from "../components/AppHeader";
+import { DoToast } from "../../../App";
 
 class SignIn extends Component {
   constructor(props) {
@@ -52,23 +53,26 @@ class SignIn extends Component {
         <ScrollView style={styles.container}>
           <Formik
             initialValues={{
-              email: null,
-              password: null
+              password: null,
+              confirmPssword: null
             }}
+            validateOnChange
+            validateOnBlur
             onSubmit={values => {
-              this.props.loginNow(
-                values.email,
-                values.password,
-                this.props.navigation
-              );
+              // this.props.loginNow(
+              //   values.email,
+              //   values.password,
+              //   this.props.navigation
+              // );
+              this.props.changePassword(this.props.isConnected);
             }}
             validationSchema={Yup.object().shape({
-              email: Yup.string()
-                .email()
-                .required(localization.emailError),
               password: Yup.string()
-
                 .min(6)
+                .required(localization.passwordError),
+              confirmPssword: Yup.string()
+                .min(6)
+                .oneOf([Yup.ref("password"), null], "notmatch")
                 .required(localization.passwordError)
             })}
             render={({
@@ -79,7 +83,8 @@ class SignIn extends Component {
               touched,
               setFieldTouched,
               isValid,
-              isSubmitting
+              isSubmitting,
+              handleBlur
             }) => (
               <View style={{ flex: 1, width: "100%", flexDirection: "column" }}>
                 <View style={{ height: hp("10%") }} />
@@ -102,7 +107,9 @@ class SignIn extends Component {
                       clearTextOnFocus={false}
                       onTouch={setFieldTouched}
                       underlineColorAndroid={
-                        touched.password && errors.password ? "red" : "#eee"
+                        touched.password && errors.password
+                          ? "red"
+                          : Colors.yellow
                       }
                       textAlignVertical="center"
                       placeholderTextColor={Colors.yellow}
@@ -124,6 +131,57 @@ class SignIn extends Component {
                       {localization.passwordError}
                     </Text>
                   )}
+                </View>
+                <View>
+                  <View
+                    style={{
+                      flex: 1,
+                      marginVertical: 10,
+                      flexDirection: rtl ? "row-reverse" : "row",
+                      justifyContent: "center",
+                      alignItems: "center"
+                    }}
+                  >
+                    <MaterialCommunityIcons
+                      style={{ position: "absolute", left: wp("10%") }}
+                      name="lock"
+                      size={hp("5%")}
+                      color={Colors.yellow}
+                    />
+                    <TextInput
+                      clearTextOnFocus={false}
+                      onTouch={setFieldTouched}
+                      underlineColorAndroid={
+                        touched.confirmPssword && errors.confirmPssword
+                          ? "red"
+                          : Colors.yellow
+                      }
+                      textAlignVertical="center"
+                      placeholderTextColor={Colors.yellow}
+                      style={[
+                        styles.TextInput,
+                        { textAlign: rtl ? "right" : "left" }
+                      ]}
+                      placeholder={localization.confirmPssword}
+                      returnKeyType="done"
+                      secureTextEntry={true}
+                      ref={ref => (this._password = ref)}
+                      onChangeText={val => setFieldValue("confirmPssword", val)}
+                      autoCapitalize="none"
+                      autoCorrect={false}
+                    />
+                  </View>
+                  {touched.confirmPssword &&
+                    errors.confirmPssword &&
+                    (errors.confirmPssword === "notmatch" ? (
+                      <Text style={styles.TextError}>
+                        {localization.passwordNotMatch}
+                      </Text>
+                    ) : (
+                      <Text style={styles.TextError}>
+                        {localization.passwordError}
+                      </Text>
+                    ))}
                 </View>
 
                 <View
@@ -166,14 +224,21 @@ class SignIn extends Component {
 const mapStateToProps = state => {
   return {
     ...state.rtl,
-    ...state.auth
+    ...state.auth,
+    ...state.netInfo
   };
 };
 const DispatshToProps = dispatch => {
   return {
     RTL: trueOrFalse => dispatch(ChangeRtl(trueOrFalse)),
     loginNow: (email, password, navigation) =>
-      Login(email, password, navigation, dispatch)
+      Login(email, password, navigation, dispatch),
+    changePassword: isConnected => {
+      if (!isConnected) {
+        DoToast(Localization.noInternetzconnection);
+        return;
+      }
+    }
   };
 };
 export default connect(
@@ -199,7 +264,7 @@ const styles = StyleSheet.create({
   TextError: {
     width: wp("100%"),
     fontSize: hp("1.4%"),
-    color: Colors.yellow,
+    color: "red",
     textAlign: "center",
     fontFamily: "Cairo-Bold"
   },

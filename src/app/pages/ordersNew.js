@@ -13,6 +13,9 @@ import { connect } from "react-redux";
 import localization from "../localization/localization";
 import { Colors } from "../styles";
 import { FetchNewOrders } from "../actions";
+import EmptyComponent from "../components/listEmptyComponent";
+
+import { DoToast } from "../../../App";
 
 const { height } = Dimensions.get("window");
 
@@ -22,7 +25,7 @@ class New extends PureComponent {
     this.state = {};
   }
   componentWillMount() {
-    this.props.getMyNewOrders(this.props.token);
+    this.props.getMyNewOrders(this.props.isConnected, this.props.token);
   }
   componentWillReceiveProps() {
     console.log("========new prop============================");
@@ -118,9 +121,24 @@ class New extends PureComponent {
             refreshControl={
               <RefreshControl
                 refreshing={this.props.newOrdersLoading}
-                onRefresh={() => this.props.getMyNewOrders(this.props.token)}
+                onRefresh={() =>
+                  this.props.getMyNewOrders(
+                    this.props.isConnected,
+                    this.props.token
+                  )
+                }
               />
             }
+            ListEmptyComponent={() => (
+              <View
+                style={{
+                  height: height / 1.5,
+                  marginTop: "40%"
+                }}
+              >
+                <EmptyComponent />
+              </View>
+            )}
           />
         </View>
       </View>
@@ -132,12 +150,19 @@ const mapState = state => {
   return {
     ...state.rtl,
     ...state.auth,
-    ...state.orders
+    ...state.orders,
+    ...state.netInfo
   };
 };
 const mapDispatch = dispatch => {
   return {
-    getMyNewOrders: token => FetchNewOrders(token, dispatch)
+    getMyNewOrders: (isConnected, token) => {
+      if (!isConnected) {
+        DoToast(localization.noInternetzconnection);
+        return;
+      }
+      FetchNewOrders(token, dispatch);
+    }
   };
 };
 

@@ -21,6 +21,8 @@ import { Toast } from "../actions";
 var { height, width } = Dimensions.get("window");
 
 import { DoToast } from "../../../App";
+import EmptyComponent from "../components/listEmptyComponent";
+import Localization from "../localization/localization";
 
 class componentName extends Component {
   constructor(props) {
@@ -29,7 +31,7 @@ class componentName extends Component {
   }
 
   componentWillMount() {
-    this.props.getDepartments();
+    this.props.getDepartments(this.props.isConnected);
   }
   _renderItem = ({ item, index }) => {
     return (
@@ -62,9 +64,21 @@ class componentName extends Component {
           refreshControl={
             <RefreshControl
               refreshing={this.props.loading}
-              onRefresh={() => this.props.getDepartments()}
+              onRefresh={() =>
+                this.props.getDepartments(this.props.isConnected)
+              }
             />
           }
+          ListEmptyComponent={() => (
+            <View
+              style={{
+                height: height / 1.5,
+                marginTop: "60%"
+              }}
+            >
+              <EmptyComponent />
+            </View>
+          )}
         />
       </View>
     );
@@ -72,12 +86,19 @@ class componentName extends Component {
 }
 const mapState = state => {
   return {
-    ...state.departments
+    ...state.departments,
+    ...state.netInfo
   };
 };
 const mapDispatch = dispatch => {
   return {
-    getDepartments: () => FetchDepartments(dispatch),
+    getDepartments: isConnected => {
+      if (!isConnected) {
+        DoToast(Localization.noInternetzconnection);
+        return;
+      }
+      FetchDepartments(dispatch);
+    },
     doToast: ms => Toast(ms, dispatch)
   };
 };

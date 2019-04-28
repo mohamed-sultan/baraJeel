@@ -150,7 +150,7 @@ class AboutUsScreen extends PureComponent {
               textAlign: "center",
               color: Colors.yellow,
               fontWeight: "800",
-              fontSize: 25,
+              fontSize: 22,
               borderBottomWidth: 3,
               marginBottom: 10,
               borderColor: Colors.yellow

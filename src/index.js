@@ -47,8 +47,8 @@ class Main extends Component {
       <React.Fragment>
         <StatusBar backgroundColor={Colors.mainDark} barStyle="light-content" />
         <RootNavigator ref={comp => (this.navigator = comp)} />
-        <NetInfo />
         <ToastContainer />
+        <NetInfo />
       </React.Fragment>
     );
   }

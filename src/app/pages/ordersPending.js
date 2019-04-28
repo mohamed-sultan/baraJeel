@@ -11,6 +11,7 @@ import {
 import { connect } from "react-redux";
 import localization from "../localization/localization";
 import { Colors } from "../styles";
+import EmptyComponent from "../components/listEmptyComponent";
 
 const { height } = Dimensions.get("window");
 var DATA = [
@@ -246,6 +247,16 @@ class New extends PureComponent {
           ListFooterComponent={() => (
             <View style={{ height: 30, alignSelf: "stretch" }} />
           )}
+          ListEmptyComponent={() => (
+            <View
+              style={{
+                height: height / 1.5,
+                marginTop: "40%"
+              }}
+            >
+              <EmptyComponent />
+            </View>
+          )}
         />
       </View>
     );
@@ -254,7 +265,8 @@ class New extends PureComponent {
 
 const mapState = state => {
   return {
-    ...state.rtl
+    ...state.rtl,
+    ...state.netInfo
   };
 };
 

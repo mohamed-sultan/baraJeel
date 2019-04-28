@@ -1,4 +1,4 @@
-import { UpdateConnection } from "../actions/types";
+import { ConnectionStatus } from "../actions/types";
 
 const initialState = {
   isConnected: true
@@ -6,7 +6,7 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case UpdateConnection:
+    case ConnectionStatus:
       return { ...state, isConnected: action.payload };
 
     default:

@@ -1,4 +1,5 @@
 export const DoToast = "dotoast";
+export const ConnectionStatus = "connection-status";
 
 export const FetchDepratmentAttemp = "fetch-department-atteemp";
 export const FetchDepartmentSuccess = "fetch-department-success";

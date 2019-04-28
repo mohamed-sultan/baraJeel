@@ -13,8 +13,10 @@ import { connect } from "react-redux";
 import localization from "../localization/localization";
 import { Colors } from "../styles";
 import { FetchDoneOrders } from "../actions";
+import EmptyComponent from "../components/listEmptyComponent";
 
 const { height } = Dimensions.get("window");
+import { DoToast } from "../../../App";
 
 class New extends PureComponent {
   constructor(props) {
@@ -22,7 +24,7 @@ class New extends PureComponent {
     this.state = {};
   }
   componentWillMount() {
-    this.props.getMyDoneOrders(this.props.token);
+    this.props.getMyDoneOrders(this.props.isConnected, this.props.token);
   }
   _renderItem = ({ item, index }) => {
     return (
@@ -112,9 +114,24 @@ class New extends PureComponent {
           refreshControl={
             <RefreshControl
               refreshing={this.props.doneOrdersLoading}
-              onRefresh={() => this.props.getMyDoneOrders(this.props.token)}
+              onRefresh={() =>
+                this.props.getMyDoneOrders(
+                  this.props.isConnected,
+                  this.props.token
+                )
+              }
             />
           }
+          ListEmptyComponent={() => (
+            <View
+              style={{
+                height: height / 1.5,
+                marginTop: "40%"
+              }}
+            >
+              <EmptyComponent />
+            </View>
+          )}
         />
       </View>
     );
@@ -125,12 +142,19 @@ const mapState = state => {
   return {
     ...state.rtl,
     ...state.auth,
-    ...state.orders
+    ...state.orders,
+    ...state.netInfo
   };
 };
 const mapDispatch = dispatch => {
   return {
-    getMyDoneOrders: token => FetchDoneOrders(token, dispatch)
+    getMyDoneOrders: (isConnected, token) => {
+      if (!isConnected) {
+        DoToast(localization.noInternetzconnection);
+        return;
+      }
+      FetchDoneOrders(token, dispatch);
+    }
   };
 };
 

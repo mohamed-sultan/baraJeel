@@ -60,7 +60,11 @@ export default (localization = new LocalizedStrings({
     loginFail: "invalid email or password",
     determineYourLocation: "determine your location",
     please: "please",
-    yourOrderDoneSuccessfully: "your order done successfully"
+    yourOrderDoneSuccessfully: "your order done successfully",
+    noDataToSHow: "no data to show",
+    confirmPssword: "confirm password",
+    passwordNotMatch: "password not match",
+    noInternetzconnection: "no internet connection"
   },
   ar: {
     home: "الرئسيه",
@@ -122,6 +126,10 @@ export default (localization = new LocalizedStrings({
     loginFail: "اداوات المرور غير صحيحه",
     determineYourLocation: "حدد موقعك",
     please: "من فضلك",
-    yourOrderDoneSuccessfully: "تم انشاء الطلب بنجاح"
+    yourOrderDoneSuccessfully: "تم انشاء الطلب بنجاح",
+    noDataToSHow: "لايوجد بيانات لعرضها",
+    confirmPssword: "تاكيد كلمه المرور",
+    passwordNotMatch: "كلمات المرور غير متطابقه",
+    noInternetzconnection: "لا يوجد اتصال بالانترنت"
   }
 }));

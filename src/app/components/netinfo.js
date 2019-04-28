@@ -2,7 +2,8 @@ import React from "react";
 import { View, Text, StyleSheet, NetInfo } from "react-native";
 import { connect } from "react-redux";
 
-import { updateConnectionStatus } from "../actions";
+import { UpdateConnectionStatus } from "../actions";
+import Localization from "../localization/localization";
 
 class MyNetInfo extends React.PureComponent {
   constructor(props) {
@@ -12,6 +13,9 @@ class MyNetInfo extends React.PureComponent {
   }
 
   componentDidMount() {
+    NetInfo.isConnected.fetch().then(isConnected => {
+      this.props.UpdateConnectionStatus(isConnected);
+    });
     NetInfo.isConnected.addEventListener(
       "connectionChange",
       this._handleConnectionChange
@@ -25,9 +29,8 @@ class MyNetInfo extends React.PureComponent {
     );
   }
 
-  _handleConnectionChange = isConnected => {
-    this.props.updateConnectionStatus(isConnected);
-  };
+  _handleConnectionChange = isConnected =>
+    this.props.UpdateConnectionStatus(isConnected);
 
   render() {
     const { netInfo } = this.props;
@@ -35,7 +38,9 @@ class MyNetInfo extends React.PureComponent {
     if (netInfo.isConnected) return <View />;
     return (
       <View style={styles.connectionStatus}>
-        <Text style={styles.connectionText}>لايوجد اتصال بالانترنت</Text>
+        <Text style={styles.connectionText}>
+          {Localization.noInternetzconnection}
+        </Text>
       </View>
     );
   }
@@ -43,10 +48,10 @@ class MyNetInfo extends React.PureComponent {
 
 const styles = StyleSheet.create({
   connectionStatus: {
-    position: "absolute",
-    bottom: 0,
+    // position: "absolute",
+    // bottom: 0,
     width: "100%",
-    backgroundColor: "red",
+    backgroundColor: "black",
     alignItems: "center",
     justifyContent: "center",
     height: 20
@@ -66,5 +71,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { updateConnectionStatus }
+  { UpdateConnectionStatus }
 )(MyNetInfo);

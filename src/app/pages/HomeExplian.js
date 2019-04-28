@@ -53,6 +53,7 @@ class HomeOrder extends Component {
     let d = this.props.navigation.state.params;
     delete d.name;
     this.props.createNewOrderNow(
+      this.propsisConnected,
       this.props.token,
       {
         ...d,
@@ -267,14 +268,20 @@ const mapState = state => {
   return {
     ...state.rtl,
     ...state.orders,
-    ...state.auth
+    ...state.auth,
+    ...state.netInfo
   };
 };
 
 const mapDispatch = dispatch => {
   return {
-    createNewOrderNow: (token, data, navigation) =>
-      CreateNewOrder(token, data, navigation, dispatch)
+    createNewOrderNow: (isConnected, token, data, navigation) => {
+      if (!isConnected) {
+        DoToast(Localization.noInternetzconnection);
+        return;
+      }
+      CreateNewOrder(token, data, navigation, dispatch);
+    }
   };
 };
 

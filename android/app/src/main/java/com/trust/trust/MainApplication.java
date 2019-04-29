@@ -3,6 +3,9 @@ package com.trust.trust;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.zmxv.RNSound.RNSoundPackage;
+import com.rnim.rn.audio.ReactNativeAudioPackage;
+import com.airbnb.android.react.maps.MapsPackage;
 import com.reactnative.ivpusic.imagepicker.PickerPackage;
 import com.reactlibrary.RNPaypalPackage;
 import com.airbnb.android.react.maps.MapsPackage;
@@ -18,6 +21,8 @@ import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
 import com.facebook.react.modules.i18nmanager.I18nUtil;
+import com.agontuk.RNFusedLocation.RNFusedLocationPackage;
+
 
 import java.util.Arrays;
 import java.util.List;
@@ -42,12 +47,16 @@ public class MainApplication extends Application implements ReactApplication {
     @Override
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(new MainReactPackage(),
+            new RNSoundPackage(),
+            new ReactNativeAudioPackage(),
+      new RNFusedLocationPackage(),
+            new MapsPackage(),
             new PickerPackage(),
             new RNPaypalPackage(),
             //new MapsPackage(),
              new RNFluidicSliderPackage(),
           // new RNPaypalPackage(),
-           new MapsPackage(),
+          // new MapsPackage(),
           new SplashScreenReactPackage(),
            new FBSDKPackage(mCallbackManager),
             new ReactNativeLocalizationPackage(),

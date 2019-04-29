@@ -18,13 +18,17 @@ import ToastContainer from "./src/app/components/ToastContainer";
 import store from "./src/app/store";
 import { Colors } from "./src/app/styles";
 
+import Audio from "./audio";
+
 export const DoToast = ms => store.dispatch({ type: "dotoast", ms });
 
 import Main from "./src";
 export default class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      test: false
+    };
 
     setTimeout(() => {
       SplashScreen.hide();
@@ -57,6 +61,9 @@ export default class App extends Component {
 
   render() {
     const persistor = persistStore(store);
+    if (this.state.test) {
+      return <Audio />;
+    }
     return (
       <Provider store={store}>
         <PersistGate persistor={persistor}>

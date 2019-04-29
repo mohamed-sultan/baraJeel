@@ -26,6 +26,8 @@ import CalenderImage from "../../img/calenderImage.png";
 import { DoToast } from "../../../App";
 
 import { CreateNewOrder } from "../actions";
+import AudioModal from "../../../audio";
+
 const { width, height } = Dimensions.get("window");
 
 class HomeOrder extends Component {
@@ -33,13 +35,19 @@ class HomeOrder extends Component {
     super(props);
     this.state = {
       val: "",
-      image: ""
+      image: "",
+      showModal: false,
+      base64: ""
     };
   }
 
   _handlePress = () => {
     if (this.state.image === "") {
       DoToast(`${Localization.please} ${Localization.attacImage}`);
+      return;
+    }
+    if (this.state.base64 === "") {
+      DoToast(`${Localization.please} ${Localization.recordYourNotes}`);
       return;
     }
     if (this.state.val === "") {
@@ -53,12 +61,13 @@ class HomeOrder extends Component {
     let d = this.props.navigation.state.params;
     delete d.name;
     this.props.createNewOrderNow(
-      this.propsisConnected,
+      this.props.isConnected,
       this.props.token,
       {
         ...d,
         image: this.state.image,
-        note: this.state.val
+        note: this.state.val,
+        voice: this.state.base64
       },
       this.props.navigation
     );
@@ -239,6 +248,38 @@ class HomeOrder extends Component {
                   size={40}
                   style={{ color: Colors.yellow }}
                   name="file-photo-o"
+                />
+              </TouchableOpacity>
+            </View>
+            <AudioModal
+              getimageBase={base64 => {
+                this.setState({ base64 });
+              }}
+              showModal={this.state.showModal}
+            />
+            <View style={styles.rowExplain}>
+              <View style={styles.rowExplainText}>
+                <Text
+                  style={{
+                    color: "#70284b",
+                    fontSize: 22,
+                    fontWeight: "800",
+                    paddingVertical: 10
+                  }}
+                >
+                  {Localization.recordYourNotes}
+                </Text>
+              </View>
+              <TouchableOpacity
+                onPress={() =>
+                  this.setState({ showModal: !this.state.showModal })
+                }
+                style={styles.rowExplainTouchable}
+              >
+                <FontAwesome
+                  name="microphone"
+                  color={Colors.yellow}
+                  size={40}
                 />
               </TouchableOpacity>
             </View>

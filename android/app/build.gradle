@@ -1,3 +1,4 @@
+
 apply plugin: "com.android.application"
 
 import com.android.build.OutputFile
@@ -150,6 +151,9 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-sound')
+    compile project(':react-native-audio')
+    compile project(':react-native-maps')
     compile project(':react-native-image-crop-picker')
     compile project(':react-native-splash-screen')
     compile project(':react-native-paypal-lib')
@@ -158,6 +162,7 @@ dependencies {
     implementation project(':react-native-maps')
     implementation project(':react-native-splash-screen')
     compile project(':react-native-fbsdk')
+    compile project(':react-native-geolocation-service')
     compile project(':react-native-localization')
     compile project(':react-native-vector-icons')
     implementation fileTree(dir: "libs", include: ["*.jar"])

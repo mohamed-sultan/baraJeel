@@ -42,7 +42,11 @@ class componentName extends Component {
           this.props.navigation.navigate("HomeOrderScreen", { ...item })
         }
       >
-        <Image source={{ uri: item.photos[0].thumb }} style={styles.icon} />
+        <Image
+          resizeMode="contain"
+          source={{ uri: item.photos[0].thumb }}
+          style={styles.icon}
+        />
         <Text style={styles.text}>{item.name}</Text>
       </TouchableOpacity>
     );

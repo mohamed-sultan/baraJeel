@@ -8,10 +8,13 @@ import {
   ScrollView,
   TouchableOpacity,
   Dimensions,
-  Image
+  Image,
+  PermissionsAndroid,
+  Platform
 } from "react-native";
 import { connect } from "react-redux";
 import MapView, { Marker } from "react-native-maps";
+import Geolocation from "react-native-geolocation-service";
 
 import Localization from "../localization/localization";
 import Header from "../components/AppHeader";
@@ -42,13 +45,127 @@ class HomeOrder extends Component {
       coordinate: {
         latitude: 23.614328,
         longitude: 58.545284
-      }
+      },
+      loading: false,
+      updatesEnabled: false,
+      location: {}
     };
   }
+
+  componentDidMount() {
+    this.getLocationUpdates();
+  }
+  hasLocationPermission = async () => {
+    if (
+      Platform.OS === "ios" ||
+      (Platform.OS === "android" && Platform.Version < 23)
+    ) {
+      return true;
+    }
+
+    const hasPermission = await PermissionsAndroid.check(
+      PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
+    );
+
+    if (hasPermission) return true;
+
+    const status = await PermissionsAndroid.request(
+      PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
+    );
+
+    if (status === PermissionsAndroid.RESULTS.GRANTED) return true;
+
+    if (status === PermissionsAndroid.RESULTS.DENIED) {
+      ToastAndroid.show(
+        "Location permission denied by user.",
+        ToastAndroid.LONG
+      );
+    } else if (status === PermissionsAndroid.RESULTS.NEVER_ASK_AGAIN) {
+      ToastAndroid.show(
+        "Location permission revoked by user.",
+        ToastAndroid.LONG
+      );
+    }
+
+    return false;
+  };
+  getLocation = async () => {
+    const hasLocationPermission = await this.hasLocationPermission();
+
+    if (!hasLocationPermission) return;
+
+    this.setState({ loading: true }, () => {
+      Geolocation.getCurrentPosition(
+        position => {
+          this.setState({ location: position, loading: false });
+          console.log("====================================");
+          console.log("location", position);
+          console.log("====================================");
+        },
+        error => {
+          this.setState({ location: error, loading: false });
+          console.log("====================================");
+          console.log("location error", error);
+          console.log("====================================");
+        },
+        {
+          enableHighAccuracy: true,
+          timeout: 15000,
+          maximumAge: 10000,
+          distanceFilter: 50
+        }
+      );
+    });
+  };
 
   onRegionChange(region) {
     this.setState({ region });
   }
+
+  getLocationUpdates = async () => {
+    const hasLocationPermission = await this.hasLocationPermission();
+
+    if (!hasLocationPermission) return;
+
+    this.setState({ updatesEnabled: true }, () => {
+      this.watchId = Geolocation.watchPosition(
+        position => {
+          this.setState({
+            region: {
+              ...this.state.region,
+              latitude: position.coords.latitude,
+              longitude: position.coords.longitude
+            }
+          });
+          console.log("=============locaation update=======================");
+          console.log(position);
+          console.log("==============location update======================");
+        },
+        error => {
+          this.setState({ location: error });
+          console.log(
+            "========location update error============================"
+          );
+          console.log(error);
+          console.log("====================================");
+        },
+        {
+          enableHighAccuracy: true,
+          distanceFilter: 0,
+          interval: 5000,
+          fastestInterval: 2000
+        }
+      );
+    });
+  };
+
+  removeLocationUpdates = () => {
+    if (this.watchId !== null) {
+      Geolocation.clearWatch(this.watchId);
+      this.setState({ updatesEnabled: false });
+    }
+  };
+
   _handlePress = () => {
     if (this.state.val === "") {
       DoToast(`${Localization.please} ${Localization.determineYourLocation}`);

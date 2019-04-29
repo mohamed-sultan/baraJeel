@@ -65,7 +65,8 @@ export default (localization = new LocalizedStrings({
     confirmPssword: "confirm password",
     passwordNotMatch: "password not match",
     noInternetzconnection: "no internet connection",
-    yourPasswordChangeSuccessufl: "your password changed successfully"
+    yourPasswordChangeSuccessufl: "your password changed successfully",
+    time: "time"
   },
   ar: {
     home: "الرئسيه",
@@ -132,6 +133,7 @@ export default (localization = new LocalizedStrings({
     confirmPssword: "تاكيد كلمه المرور",
     passwordNotMatch: "كلمات المرور غير متطابقه",
     noInternetzconnection: "لا يوجد اتصال بالانترنت",
-    yourPasswordChangeSuccessufl: "تم تغير كلمه المرور بنجاح"
+    yourPasswordChangeSuccessufl: "تم تغير كلمه المرور بنجاح",
+    time: "الوقت"
   }
 }));

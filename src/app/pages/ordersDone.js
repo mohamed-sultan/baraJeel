@@ -54,10 +54,8 @@ class New extends PureComponent {
           <Text style={this.styles.labelValue}>{item.type}</Text>
         </View>
         <View style={this.styles.rowContainer}>
-          <Text style={this.styles.labelName}>{`${
-            localization.address
-          } : `}</Text>
-          <Text style={this.styles.labelValue}>{item.id}</Text>
+          <Text style={this.styles.labelName}>{`${localization.time} : `}</Text>
+          <Text style={this.styles.labelValue}>{item.time}</Text>
         </View>
       </View>
     );

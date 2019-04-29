@@ -55,13 +55,13 @@
 	</dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>GE_SS_Unique_Light.otf</string>
 		<string>Cairo-Black.ttf</string>
 		<string>Cairo-Bold.ttf</string>
 		<string>Cairo-ExtraLight.ttf</string>
 		<string>Cairo-Light.ttf</string>
 		<string>Cairo-Regular.ttf</string>
 		<string>Cairo-SemiBold.ttf</string>
+		<string>GE_SS_Unique_Light.otf</string>
 		<string>AntDesign.ttf</string>
 		<string>Entypo.ttf</string>
 		<string>EvilIcons.ttf</string>

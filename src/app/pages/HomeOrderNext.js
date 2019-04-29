@@ -15,7 +15,7 @@ import { connect } from "react-redux";
 import Localization from "../localization/localization";
 import Header from "../components/AppHeader";
 import { Colors } from "../styles";
-import CHeckBox from "../components/checkBox";
+import CHeckBox from "../components/checkBox1";
 import DateTimePicker from "react-native-modal-datetime-picker";
 
 import CalenderImage from "../../img/calenderImage.png";
@@ -67,7 +67,7 @@ class HomeOrder extends Component {
       address: this.props.navigation.state.params.address,
       lat: this.props.navigation.state.params.lat,
       lng: this.props.navigation.state.params.long,
-      type: sppedChecked ? "quick" : "ss",
+      type: sppedChecked ? "quick" : "ordinary",
       time: morningCheckde ? "morining" : "evening",
       date: Date,
       department_id: this.props.navigation.state.params.department_id

@@ -17,7 +17,6 @@ import ImagePicker from "react-native-image-crop-picker";
 import Localization from "../localization/localization";
 import Header from "../components/AppHeader";
 import { Colors } from "../styles";
-import CHeckBox from "../components/checkBox";
 import DateTimePicker from "react-native-modal-datetime-picker";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 

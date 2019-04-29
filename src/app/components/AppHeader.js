@@ -1,5 +1,11 @@
 import React, { PureComponent } from "react";
-import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  Platform
+} from "react-native";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp
@@ -55,7 +61,8 @@ export default connect(mapState)(AppHeader);
 const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.mainDark,
-    height: hp("10%")
+    height: Platform.OS === "ios" ? hp("12%") : hp("10%"),
+    paddingTop: Platform.OS === "ios" ? hp("3%") : 0
   },
   mainHeader: {
     color: "white",

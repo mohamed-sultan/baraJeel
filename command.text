@@ -32,3 +32,7 @@ cd Android/Sdk/emulator && ./emulator -avd Nexus_5X_API_28_2
 sudo bash -c 'echo "$(logname) ALL=(ALL:ALL) NOPASSWD: ALL" | (EDITOR="tee -a" visudo)'
 ./gradlew assembleRelease
 react-native run-android --variant=release
+
+{
+react-native/third-party/double-conversion-1.1.6
+cd node_modules/react-native/third-party/glog-0.3.5/ && ../../scripts/ios-configure-glog.sh}

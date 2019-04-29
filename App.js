@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BackHandler, Alert, StatusBar } from "react-native";
+import { BackHandler, Alert, StatusBar, SafeAreaView } from "react-native";
 import { Provider } from "react-redux";
 
 import { persistStore } from "redux-persist";
@@ -30,9 +30,8 @@ export default class App extends Component {
       test: false
     };
 
-    setTimeout(() => {
-      SplashScreen.hide();
-    }, 2000);
+    // setTimeout(() => {
+    // }, 2000);
   }
   componentWillMount() {
     BackHandler.addEventListener("hardwareBackPress", this.backPressed);
@@ -40,6 +39,9 @@ export default class App extends Component {
 
   componentWillUnmount() {
     BackHandler.removeEventListener("hardwareBackPress", this.backPressed);
+  }
+  componentDidMount() {
+    SplashScreen.hide();
   }
 
   backPressed = () => {

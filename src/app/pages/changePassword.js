@@ -24,7 +24,6 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { ChangeRtl } from "../actions/Rtl";
-import MyCheckbox from "../components/checkbox";
 import { Colors } from "../styles";
 
 import { Login } from "../actions";

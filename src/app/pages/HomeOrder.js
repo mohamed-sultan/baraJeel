@@ -213,7 +213,7 @@ class HomeOrder extends Component {
         backgroundColor: "#ffffff",
         paddingVertical: 10,
         paddingHorizontal: 10,
-        fontSize: 20,
+        fontSize: 15,
         fontWeight: "500",
         color: "#70284b"
       },
@@ -250,7 +250,6 @@ class HomeOrder extends Component {
               <MapView
                 style={{ flex: 1, margin: 5, borderRadius: 20, borderWidth: 1 }}
                 region={this.state.region}
-                onRegionChangeComplete={r => this.onRegionChange(r)}
               >
                 <Marker
                   coordinate={{
@@ -262,7 +261,6 @@ class HomeOrder extends Component {
                   onDragStart={e => console.log("onDragStart", e)}
                   onDragEnd={e => console.log("onDragEnd", e)}
                   onPress={e => console.log("onPress", e)}
-                  draggable
                 >
                   <Image
                     source={LocationIcon}

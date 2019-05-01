@@ -50,10 +50,11 @@ class HomeOrder extends Component {
       updatesEnabled: false,
       location: {}
     };
+    this.getLocation();
   }
 
   componentDidMount() {
-    this.getLocationUpdates();
+    this.getLocation();
   }
   hasLocationPermission = async () => {
     if (
@@ -97,10 +98,16 @@ class HomeOrder extends Component {
     this.setState({ loading: true }, () => {
       Geolocation.getCurrentPosition(
         position => {
-          this.setState({ location: position, loading: false });
-          console.log("====================================");
-          console.log("location", position);
-          console.log("====================================");
+          this.setState({
+            region: {
+              ...this.state.region,
+              latitude: position.coords.latitude,
+              longitude: position.coords.longitude
+            }
+          });
+          console.log("=============locaation first=======================");
+          console.log(position);
+          console.log("==============location first======================");
         },
         error => {
           this.setState({ location: error, loading: false });
@@ -118,9 +125,9 @@ class HomeOrder extends Component {
     });
   };
 
-  onRegionChange(region) {
+  onRegionChange = region => {
     this.setState({ region });
-  }
+  };
 
   getLocationUpdates = async () => {
     const hasLocationPermission = await this.hasLocationPermission();
@@ -250,6 +257,7 @@ class HomeOrder extends Component {
               <MapView
                 style={{ flex: 1, margin: 5, borderRadius: 20, borderWidth: 1 }}
                 region={this.state.region}
+                // onRegionChange={this.onRegionChange}
               >
                 <Marker
                   coordinate={{
@@ -261,6 +269,7 @@ class HomeOrder extends Component {
                   onDragStart={e => console.log("onDragStart", e)}
                   onDragEnd={e => console.log("onDragEnd", e)}
                   onPress={e => console.log("onPress", e)}
+                  draggable
                 >
                   <Image
                     source={LocationIcon}

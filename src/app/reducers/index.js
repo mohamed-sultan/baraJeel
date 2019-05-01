@@ -17,6 +17,7 @@ import LogOutReaucer from "./logOut";
 import departmentsReducer from "./department";
 import AuthReducer from "./auth";
 import OrdersReducer from "./orders";
+import showStartpLanguage from "./startupLanguage";
 
 export default persistCombineReducers(config, {
   nav: NavigationReducer,
@@ -27,5 +28,6 @@ export default persistCombineReducers(config, {
   logout: LogOutReaucer,
   departments: departmentsReducer,
   auth: AuthReducer,
-  orders: OrdersReducer
+  orders: OrdersReducer,
+  startupLanguage: showStartpLanguage
 });

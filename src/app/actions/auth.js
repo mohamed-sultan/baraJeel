@@ -11,7 +11,7 @@ import {
   RegisterFail
 } from "./types";
 
-export const Login = (email, password, navigation, dispatch) => {
+export const Login = (email, password, remeberMe, navigation, dispatch) => {
   dispatch({ type: LOGIN_ATTEMPT });
   axios
     .post("http://trust.shobeek-lobeek.com/api/auth/login", { email, password })
@@ -20,7 +20,8 @@ export const Login = (email, password, navigation, dispatch) => {
         type: LOGIN_SUCCESS,
         payload: r.data.data,
         token: r.data.token,
-        email
+        email,
+        remeberMe
       });
       navigation.navigate("HomeNav");
       DoToast(`${Localization.welcome} ${r.data.data.name}`);

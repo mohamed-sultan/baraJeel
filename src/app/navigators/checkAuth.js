@@ -12,11 +12,16 @@ class AuthLoadingScreen extends React.Component {
 
   _bootstrapAsync = async () => {
     const user = this.props.user !== null;
-    console.log("====================================");
-    console.log("from switch navigatior", user);
-    console.log("====================================");
+    const { remeberMe } = this.props;
 
-    this.props.navigation.navigate(user ? "HomeNav" : "AuthNav");
+    if (this.props.lanfDidShow) {
+      this.props.navigation.navigate(
+        !remeberMe ? "AuthNav" : user ? "HomeNav" : "AuthNav"
+      );
+      return;
+    } else {
+      this.props.navigation.navigate("LanguageStartPage");
+    }
   };
 
   render() {
@@ -32,7 +37,8 @@ class AuthLoadingScreen extends React.Component {
 const mapState = state => {
   return {
     ...state.auth,
-    ...state.rtl
+    ...state.rtl,
+    ...state.startupLanguage
   };
 };
 

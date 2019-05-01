@@ -12,7 +12,8 @@ const initialState = {
   token: null,
   loadingLogin: false,
   loadingRegister: false,
-  email: ""
+  email: "",
+  remeberMe: true
 };
 
 export default (state = initialState, action) => {
@@ -26,7 +27,8 @@ export default (state = initialState, action) => {
         loadingRegister: false,
         user: action.payload,
         token: action.token,
-        email: action.email
+        email: action.email,
+        remeberMe: action.remeberMe
       };
     case LOGIN_FAILED:
       return { ...state, loadingLogin: false, loadingRegister: false };

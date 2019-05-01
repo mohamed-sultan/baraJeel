@@ -1,12 +1,12 @@
 import { ShowLanguageScreeOnStartup } from "../actions/types";
 const initialState = {
-  logout: false
+  lanfDidShow: false
 };
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
-    case "logout":
-      return { ...state, logout: payload };
+    case ShowLanguageScreeOnStartup:
+      return { ...state, lanfDidShow: payload };
 
     default:
       return state;

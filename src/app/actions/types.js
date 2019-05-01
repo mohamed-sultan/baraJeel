@@ -28,3 +28,5 @@ export const FetchOrderInprogressFail = "order-progress-fail";
 export const CreateNewOrderAttemp = "create-new-order-attemp";
 export const CreateNewOrderSuccess = "create-new-order-success";
 export const CreateNewOrderFail = "create-new-order-fail";
+
+export const ShowLanguageScreeOnStartup = "show-lang-screen-on-startup";

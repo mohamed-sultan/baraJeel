@@ -65,6 +65,7 @@ class SignIn extends Component {
               this.props.loginNow(
                 values.email,
                 values.password,
+                this.state.remeberMe,
                 this.props.navigation
               );
             }}
@@ -274,8 +275,8 @@ const mapStateToProps = state => {
 const DispatshToProps = dispatch => {
   return {
     RTL: trueOrFalse => dispatch(ChangeRtl(trueOrFalse)),
-    loginNow: (email, password, navigation) =>
-      Login(email, password, navigation, dispatch)
+    loginNow: (email, password, remeberMe, navigation) =>
+      Login(email, password, remeberMe, navigation, dispatch)
   };
 };
 export default connect(

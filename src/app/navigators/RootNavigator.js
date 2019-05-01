@@ -12,6 +12,7 @@ import { connect } from "react-redux";
 import AuthNav from "./AuthNavigator";
 import HomeNav from "./DrawerNavigator";
 import CheckAuth from "./checkAuth";
+import LanguageStartPage from "./languageStartup";
 
 export const RootNavigator = createSwitchNavigator(
   {
@@ -28,7 +29,8 @@ export const RootNavigator = createSwitchNavigator(
       navigationOption: {
         title: "Home"
       }
-    }
+    },
+    LanguageStartPage
   },
   {
     initialRouteName: "CheckAuth",

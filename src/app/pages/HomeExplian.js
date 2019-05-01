@@ -36,7 +36,9 @@ class HomeOrder extends Component {
       val: "",
       image: "",
       showModal: false,
-      base64: ""
+      base64: "",
+      showConfirmation: false,
+      confirmed: false
     };
   }
 
@@ -51,6 +53,10 @@ class HomeOrder extends Component {
     }
     if (this.state.val === "") {
       DoToast(`${Localization.please} ${Localization.writeNotes}`);
+      return;
+    }
+    if (!this.state.confirmed) {
+      this.setState({ showConfirmation: true });
       return;
     }
     console.log("====================================");
@@ -195,7 +201,85 @@ class HomeOrder extends Component {
             hasback
             navigation={this.props.navigation}
           />
-
+          {this.state.showConfirmation && (
+            <View
+              style={{
+                position: "absolute",
+                top: height / 3,
+                right: "10%",
+                left: "10%",
+                height: height / 4,
+                backgroundColor: "#ffffff",
+                borderRadius: 14,
+                zIndex: 1000,
+                paddingVertical: 10
+              }}
+            >
+              <View style={{ flex: 1 }}>
+                <Text
+                  style={{
+                    textAlign: "center",
+                    fontSize: 20,
+                    fontWeight: "bold",
+                    color: Colors.yellow
+                  }}
+                >{`${Localization.order} ${name}`}</Text>
+                <Text
+                  style={{
+                    textAlign: "center",
+                    fontSize: 12,
+                    fontWeight: "bold",
+                    marginVertical: 10,
+                    fontWeight: "800"
+                  }}
+                >{`${Localization.areYouSureOfProccessingTheRequest} ?`}</Text>
+              </View>
+              <View
+                style={{
+                  flex: 1,
+                  flexDirection: this.props.rtl ? "row-reverse" : "row",
+                  alignItems: "center",
+                  justifyContent: "space-around"
+                  //  paddingHorizontal: 30
+                }}
+              >
+                <TouchableOpacity
+                  style={{
+                    width: 90,
+                    height: 50,
+                    backgroundColor: Colors.yellow,
+                    justifyContent: "center",
+                    alignItems: "center",
+                    borderRadius: 11
+                  }}
+                  onPress={() => {
+                    this.setState({ confirmed: true, showConfirmation: false });
+                    setTimeout(() => this._handlePress(), 1000);
+                  }}
+                >
+                  <Text style={{ color: "white", textAlign: "center" }}>
+                    {Localization.confirm}
+                  </Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={{
+                    width: 90,
+                    height: 50,
+                    borderColor: Colors.yellow,
+                    borderWidth: 1,
+                    justifyContent: "center",
+                    alignItems: "center",
+                    borderRadius: 11
+                  }}
+                  onPress={() => this.setState({ showConfirmation: false })}
+                >
+                  <Text style={{ color: Colors.yellow, textAlign: "center" }}>
+                    {Localization.close}
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          )}
           <View style={styles.container}>
             <Text style={styles.yourLocation}>
               {Localization.explainYourProblem}
@@ -250,24 +334,28 @@ class HomeOrder extends Component {
                 />
               </TouchableOpacity>
             </View>
-            <AudioModal
-              getimageBase={base64 => {
-                this.setState({ base64 });
-              }}
-              showModal={this.state.showModal}
-            />
+
             <View style={styles.rowExplain}>
               <View style={styles.rowExplainText}>
-                <Text
-                  style={{
-                    color: "#70284b",
-                    fontSize: 22,
-                    fontWeight: "800",
-                    paddingVertical: 10
-                  }}
-                >
-                  {Localization.recordYourNotes}
-                </Text>
+                {this.state.showModal ? (
+                  <AudioModal
+                    getimageBase={base64 => {
+                      this.setState({ base64 });
+                    }}
+                    showModal={this.state.showModal}
+                  />
+                ) : (
+                  <Text
+                    style={{
+                      color: "#70284b",
+                      fontSize: 22,
+                      fontWeight: "800",
+                      paddingVertical: 10
+                    }}
+                  >
+                    {Localization.recordYourNotes}
+                  </Text>
+                )}
               </View>
               <TouchableOpacity
                 onPress={() =>

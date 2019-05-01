@@ -24,6 +24,7 @@ class Main extends Component {
       ready: false
     };
   }
+
   componentWillReceiveProps(nxt) {
     this.navigator.store.dispatch({
       type: "Navigation/NAVIGATE",

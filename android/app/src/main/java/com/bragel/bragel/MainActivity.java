@@ -1,4 +1,4 @@
-package com.trust.trust;
+package com.bragel.bragel;
 
 import android.content.Context;
 
@@ -17,7 +17,7 @@ public class MainActivity extends ReactActivity {
      */
     @Override
     protected String getMainComponentName() {
-        return "Trust";
+        return "Bragel";
     }
 
     @Override

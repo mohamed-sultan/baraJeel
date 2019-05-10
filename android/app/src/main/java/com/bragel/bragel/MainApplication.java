@@ -1,4 +1,4 @@
-package com.trust.trust;
+package com.bragel.bragel;
 
 import android.app.Application;
 
@@ -22,6 +22,8 @@ import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
 import com.facebook.react.modules.i18nmanager.I18nUtil;
 import com.agontuk.RNFusedLocation.RNFusedLocationPackage;
+import com.microsoft.codepush.react.CodePush;
+
 
 
 import java.util.Arrays;
@@ -45,10 +47,17 @@ public class MainApplication extends Application implements ReactApplication {
     }
 
     @Override
+    protected String getJSBundleFile() {
+    return CodePush.getJSBundleFile();
+    }
+
+
+    @Override
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(new MainReactPackage(),
             new RNSoundPackage(),
             new ReactNativeAudioPackage(),
+  new CodePush("llz2JY0z9A2uesaZlqbbxkVcuETz1b96e02b-7ad5-4b16-a6ad-830f6ae26b7a", MainApplication.this, BuildConfig.DEBUG),
       new RNFusedLocationPackage(),
             new MapsPackage(),
             new PickerPackage(),
@@ -60,11 +69,14 @@ public class MainApplication extends Application implements ReactApplication {
           new SplashScreenReactPackage(),
            new FBSDKPackage(mCallbackManager),
             new ReactNativeLocalizationPackage(),
+
           new VectorIconsPackage());
     }
 
     @Override
     protected String getJSMainModuleName() {
+    
+
       return "index";
     }
   };

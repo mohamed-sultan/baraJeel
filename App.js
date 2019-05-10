@@ -21,9 +21,10 @@ import { Colors } from "./src/app/styles";
 import Audio from "./audio";
 
 export const DoToast = ms => store.dispatch({ type: "dotoast", ms });
+import codePush from "react-native-code-push";
 
 import Main from "./src";
-export default class App extends Component {
+class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -75,3 +76,8 @@ export default class App extends Component {
     );
   }
 }
+let codePushOptions = {
+  checkFrequency: codePush.CheckFrequency.ON_APP_RESUME,
+  installMode: codePush.InstallMode.ON_NEXT_RESUME
+};
+export default codePush(codePushOptions)(App);

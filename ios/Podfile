@@ -1,18 +1,18 @@
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
 
-target 'Bragel' do
+target 'Barajeel' do
   # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
   # use_frameworks!
 
-  # Pods for Bragel
+  # Pods for Barajeel
 
   pod 'FBSDKCoreKit'
   pod 'FBSDKLoginKit'
   pod 'FBSDKShareKit'
 
 
-  target 'Bragel-tvOSTests' do
+  target 'Barajeel-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
     pod 'react-native-splash-screen', :path => '../node_modules/react-native-splash-screen'
@@ -33,20 +33,20 @@ target 'Bragel' do
 
   end
 
-  target 'BragelTests' do
+  target 'BarajeelTests' do
     inherit! :search_paths
     # Pods for testing
   end
 
 end
 
-target 'Bragel-tvOS' do
+target 'Barajeel-tvOS' do
   # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
   # use_frameworks!
 
-  # Pods for Bragel-tvOS
+  # Pods for Barajeel-tvOS
 
-  # target 'Bragel-tvOSTests' do
+  # target 'Barajeel-tvOSTests' do
   #   inherit! :search_paths
   #   # Pods for testing
   # end

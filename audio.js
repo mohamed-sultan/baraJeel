@@ -153,9 +153,9 @@ class AudioExample extends Component {
     if (this.state.recording) {
       await this._stop();
     }
-    if (this.state.nowPlaying) {
-      return;
-    }
+    // if (this.state.nowPlaying) {
+    //   return;
+    // }
     this.setState({ nowPlaying: true });
     // These timeouts are a hacky workaround for some issues with react-native-sound.
     // See https://github.com/zmxv/react-native-sound/issues/89.
@@ -251,7 +251,7 @@ class AudioExample extends Component {
                 <FontAwesome name="stop" color={Colors.mainDark} size={15} />
               </TouchableOpacity>
               <TouchableOpacity
-                disabled={this.state.nowPlaying}
+                //    disabled={this.state.nowPlaying}
                 onPress={() => this._play()}
               >
                 <FontAwesome

@@ -1,4 +1,4 @@
-package com.bragel.bragel;
+package com.barajeel.barajeel;
 
 import android.app.Application;
 

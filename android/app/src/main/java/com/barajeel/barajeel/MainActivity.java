@@ -1,4 +1,4 @@
-package com.bragel.bragel;
+package com.barajeel.barajeel;
 
 import android.content.Context;
 
@@ -17,7 +17,7 @@ public class MainActivity extends ReactActivity {
      */
     @Override
     protected String getMainComponentName() {
-        return "Bragel";
+        return "Barajeel";
     }
 
     @Override

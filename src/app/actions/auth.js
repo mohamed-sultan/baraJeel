@@ -73,7 +73,13 @@ export const Register = (
     })
     .catch(e => {
       console.log("============error register========================");
-      console.log(e.response, e.message);
+      console.log(e);
+      console.log("==============error register======================");
+      console.log("============error register2========================");
+      console.log(e.response);
+      console.log("==============error register======================");
+      console.log("============error register3========================");
+      console.log(e.data);
       console.log("==============error register======================");
 
       dispatch({ type: RegisterFail });

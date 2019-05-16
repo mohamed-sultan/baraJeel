@@ -43,18 +43,18 @@ class HomeOrder extends Component {
   }
 
   _handlePress = () => {
-    if (this.state.image === "") {
-      DoToast(`${Localization.please} ${Localization.attacImage}`);
-      return;
-    }
-    if (this.state.base64 === "") {
-      DoToast(`${Localization.please} ${Localization.recordYourNotes}`);
-      return;
-    }
-    if (this.state.val === "") {
-      DoToast(`${Localization.please} ${Localization.writeNotes}`);
-      return;
-    }
+    // if (this.state.image === "") {
+    //   DoToast(`${Localization.please} ${Localization.attacImage}`);
+    //   return;
+    // }
+    // if (this.state.base64 === "") {
+    //   DoToast(`${Localization.please} ${Localization.recordYourNotes}`);
+    //   return;
+    // }
+    // if (this.state.val === "") {
+    //   DoToast(`${Localization.please} ${Localization.writeNotes}`);
+    //   return;
+    // }
     if (!this.state.confirmed) {
       this.setState({ showConfirmation: true });
       return;

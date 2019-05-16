@@ -82,11 +82,11 @@ class RegisterClass extends Component {
                   .required(localization.emailError),
                 password: Yup.string()
                   .min(6)
-                  .required(localization.passwordError),
-                phone: Yup.string()
-                  //    .matches(/^(968|\+968)(9)[0-9](([0-9]){6}|([0-9]){5})$/)
                   .required(localization.passwordError)
-                  .min(11, localization.passwordError)
+                // phone: Yup.string()
+                //   //    .matches(/^(968|\+968)(9)[0-9](([0-9]){6}|([0-9]){5})$/)
+                //   .required(localization.passwordError)
+                //  // .min(11, localization.passwordError)
                 //https://ipfs.io/ipfs/QmXoypizjW3WknFiJnKLwHCnL72vedxjQkDDP1mXWo6uco/wiki/Telephone_numbers_in_Oman.html
               })}
               render={({
